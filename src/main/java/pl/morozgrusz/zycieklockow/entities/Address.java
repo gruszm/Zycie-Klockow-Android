@@ -23,7 +23,10 @@ public class Address
     @Column(name = "building_number")
     private short buildingNumber;
 
-    @Column(name = "zip_code")
+    @Column(name = "apartment_number")
+    private short apartmentNumber;
+
+    @Column(name = "zip_code", length = 6)
     private String zipCode;
 
     @Column(name = "city")
@@ -32,25 +35,26 @@ public class Address
     @Column(name = "country")
     private String country;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", length = 11)
     private String phoneNumber;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "user_fk")
-    private int user_id;
+    private User user;
 
     public Address()
     {
 
     }
 
-    public Address(String firstName, String lastName, String street, short buildingNumber,
+    public Address(String firstName, String lastName, String street, short buildingNumber, short apartmentNumber,
                    String zipCode, String city, String country, String phoneNumber)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
         this.buildingNumber = buildingNumber;
+        this.apartmentNumber = apartmentNumber;
         this.zipCode = zipCode;
         this.city = city;
         this.country = country;
@@ -107,6 +111,16 @@ public class Address
         this.buildingNumber = buildingNumber;
     }
 
+    public short getApartmentNumber()
+    {
+        return apartmentNumber;
+    }
+
+    public void setApartmentNumber(short apartmentNumber)
+    {
+        this.apartmentNumber = apartmentNumber;
+    }
+
     public String getZipCode()
     {
         return zipCode;
@@ -147,13 +161,13 @@ public class Address
         this.phoneNumber = phoneNumber;
     }
 
-    public int getUser_id()
+    public User getUser()
     {
-        return user_id;
+        return user;
     }
 
-    public void setUser_id(int user_id)
+    public void setUser(User user)
     {
-        this.user_id = user_id;
+        this.user = user;
     }
 }

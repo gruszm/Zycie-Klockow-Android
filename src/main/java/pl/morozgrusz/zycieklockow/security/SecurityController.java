@@ -1,6 +1,7 @@
 package pl.morozgrusz.zycieklockow.security;
 
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,10 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.morozgrusz.zycieklockow.datatransferobjects.UserDTO;
+import pl.morozgrusz.zycieklockow.services.UserService;
 
 @Controller
 public class SecurityController
 {
+    private UserService userService;
+
+    @Autowired
+    public SecurityController(UserService userService)
+    {
+        this.userService = userService;
+    }
+
     @GetMapping("/register")
     public String getRegistrationForm(Model model)
     {
@@ -36,6 +46,14 @@ public class SecurityController
         {
             bindingResult.addError(new FieldError("user_dto", "repeatPassword",
                     "The passwords are not the same"));
+
+            return "security/register";
+        }
+
+        if (userService.findUserByEmail(userDTO.getEmail()) != null)
+        {
+            bindingResult.addError(new FieldError("user_dto", "email",
+                    "A user with this email already exists"));
 
             return "security/register";
         }

@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <a href="#" th:href="@{/login}" sec:authorize="isAnonymous()" class="btn btn-success mt-3">Login</a>
+        <a href="#" th:href="@{/register}" sec:authorize="isAnonymous()" class="btn btn-secondary mt-3">Register</a>
         <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()" class="btn btn-success mt-3">Logout</a>
 
         <div th:if="${param.logout}" class="alert alert-success mt-3" role="alert">

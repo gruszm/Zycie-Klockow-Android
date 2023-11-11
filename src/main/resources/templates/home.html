@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <title>Home Directory</title>
@@ -8,8 +8,17 @@
 </head>
 <body>
     <div class="container">
+        <a href="#" th:href="@{/login}" sec:authorize="isAnonymous()" class="btn btn-success mt-3">Login</a>
+        <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()" class="btn btn-success mt-3">Logout</a>
+
+        <div th:if="${param.logout}" class="alert alert-success mt-3" role="alert">
+            Wylogowano poprawnie.
+        </div>
+
         <h1 class="mt-3">To jest strona główna serwisu Życie Klocków</h1>
+
         <hr>
+
         <a th:href="@{/orders/}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List of all orders</a>
         <a th:href="@{/deliveryMethods/}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">List of all delivery methods</a>
     </div>

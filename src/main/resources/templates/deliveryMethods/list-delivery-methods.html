@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <title>Delivery methods list</title>
@@ -16,8 +16,12 @@
 </head>
 <body>
     <div class="container">
-        <a th:href="@{/}" class="btn btn-primary mt-3" tabindex="-1" role="button" aria-disabled="true">Home</a>
+        <a href="#" th:href="@{/}" class="btn btn-primary mt-3" tabindex="-1" role="button" aria-disabled="true">Home</a>
+        <a href="#" th:href="@{/login}" sec:authorize="isAnonymous()" class="btn btn-success mt-3">Login</a>
+        <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()" class="btn btn-success mt-3">Logout</a>
+
         <hr>
+
         <h1>Delivery methods list:</h1>
 
         <table class="table table-bordered table-striped">

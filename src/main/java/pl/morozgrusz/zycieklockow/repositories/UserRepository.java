@@ -1,0 +1,30 @@
+package pl.morozgrusz.zycieklockow.repositories;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import pl.morozgrusz.zycieklockow.DAOs.UserDAO;
+import pl.morozgrusz.zycieklockow.entities.User;
+
+@Repository
+public class UserRepository implements UserDAO
+{
+    private EntityManager entityManager;
+
+    @Autowired
+    public UserRepository(EntityManager entityManager)
+    {
+        this.entityManager = entityManager;
+    }
+
+    @Override
+    public User findUserByEmail(String email)
+    {
+        TypedQuery<User> query = entityManager.createQuery("FROM User u where u.email = :email", User.class);
+
+        query.setParameter("email", email);
+
+        return query.getSingleResult();
+    }
+}

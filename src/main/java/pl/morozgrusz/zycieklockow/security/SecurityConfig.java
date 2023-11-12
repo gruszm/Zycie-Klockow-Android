@@ -3,15 +3,23 @@ package pl.morozgrusz.zycieklockow.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfig
 {
+    @Bean
+    public PasswordEncoder passwordEncoder()
+    {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception
     {
@@ -33,20 +41,18 @@ public class SecurityConfig
     }
 
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager()
+    public JdbcUserDetailsManager userDetailsManager(DataSource dataSource)
     {
-        UserDetails testUser = User.builder()
-                .username("test")
-                .password("{noop}test")
-                .roles("CUSTOMER")
-                .build();
+        JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager(dataSource);
 
-        UserDetails testUser2 = User.builder()
-                .username("test2")
-                .password("{noop}test")
-                .roles("ADMIN")
-                .build();
+        userDetailsManager.setUsersByUsernameQuery(
+                "SELECT email, password, active FROM user WHERE user.email = ?"
+        );
 
-        return new InMemoryUserDetailsManager(testUser, testUser2);
+        userDetailsManager.setAuthoritiesByUsernameQuery(
+                "SELECT email, role FROM user INNER JOIN role on user.id = role.user_id WHERE user.email = ?"
+        );
+
+        return userDetailsManager;
     }
 }

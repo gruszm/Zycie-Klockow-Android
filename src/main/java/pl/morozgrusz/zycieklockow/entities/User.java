@@ -2,6 +2,7 @@ package pl.morozgrusz.zycieklockow.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,7 +32,8 @@ public class User
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+               cascade = CascadeType.ALL)
     private List<Role> roles;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
@@ -137,6 +139,16 @@ public class User
     public void setRoles(List<Role> roles)
     {
         this.roles = roles;
+    }
+
+    public void addRole(Role role)
+    {
+        if (roles == null)
+        {
+            roles = new ArrayList<>();
+        }
+
+        roles.add(role);
     }
 
     public List<Address> getAddresses()

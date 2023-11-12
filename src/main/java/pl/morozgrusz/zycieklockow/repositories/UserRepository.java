@@ -1,9 +1,11 @@
 package pl.morozgrusz.zycieklockow.repositories;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import pl.morozgrusz.zycieklockow.DAOs.UserDAO;
 import pl.morozgrusz.zycieklockow.entities.User;
 
@@ -25,6 +27,20 @@ public class UserRepository implements UserDAO
 
         query.setParameter("email", email);
 
-        return query.getSingleResult();
+        try
+        {
+            return query.getSingleResult();
+        }
+        catch (NoResultException e)
+        {
+            return null;
+        }
+    }
+
+    @Override
+    @Transactional
+    public void save(User user)
+    {
+        entityManager.persist(user);
     }
 }

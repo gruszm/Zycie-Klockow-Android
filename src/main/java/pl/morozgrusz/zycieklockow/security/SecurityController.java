@@ -9,6 +9,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.morozgrusz.zycieklockow.datatransferobjects.UserDTO;
 import pl.morozgrusz.zycieklockow.services.UserService;
 
@@ -35,7 +36,8 @@ public class SecurityController
 
     @PostMapping("/processRegistration")
     public String processRegistration(@Valid @ModelAttribute("user_dto") UserDTO userDTO,
-                                      BindingResult bindingResult)
+                                      BindingResult bindingResult,
+                                      RedirectAttributes redirectAttributes)
     {
         if (bindingResult.hasErrors())
         {
@@ -57,6 +59,10 @@ public class SecurityController
 
             return "security/register";
         }
+
+        userService.save(userDTO);
+
+        redirectAttributes.addAttribute("registered", "");
 
         return "redirect:/";
     }

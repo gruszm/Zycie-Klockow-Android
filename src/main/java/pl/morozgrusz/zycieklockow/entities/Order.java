@@ -3,6 +3,7 @@ package pl.morozgrusz.zycieklockow.entities;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -76,5 +77,15 @@ public class Order
     public void setProductsWithQuantities(List<ProductWithQuantity> productsWithQuantities)
     {
         this.productsWithQuantities = productsWithQuantities;
+    }
+
+    public void addProductWithQuantity(ProductWithQuantity productWithQuantity)
+    {
+        if (productsWithQuantities == null)
+        {
+            productsWithQuantities = new ArrayList<>();
+        }
+
+        productsWithQuantities.add(productWithQuantity);
     }
 }

@@ -3,6 +3,7 @@ package pl.morozgrusz.zycieklockow.entities;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -132,6 +133,16 @@ public class Product
         this.ratings = ratings;
     }
 
+    public void addRating(Rating rating)
+    {
+        if (ratings == null)
+        {
+            ratings = new ArrayList<>();
+        }
+
+        ratings.add(rating);
+    }
+
     public List<Image> getImages()
     {
         return images;
@@ -140,5 +151,15 @@ public class Product
     public void setImages(List<Image> images)
     {
         this.images = images;
+    }
+
+    public void addImage(Image image)
+    {
+        if (images == null)
+        {
+            images = new ArrayList<>();
+        }
+
+        images.add(image);
     }
 }

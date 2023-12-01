@@ -32,14 +32,13 @@ public class User
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
-               cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Role> roles;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Address> addresses;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ProductWithQuantity> productsWithQuantities;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
@@ -159,6 +158,16 @@ public class User
     public void setAddresses(List<Address> addresses)
     {
         this.addresses = addresses;
+    }
+
+    public void addAddress(Address address)
+    {
+        if (addresses == null)
+        {
+            addresses = new ArrayList<>();
+        }
+
+        addresses.add(address);
     }
 
     public List<ProductWithQuantity> getProductsWithQuantities()

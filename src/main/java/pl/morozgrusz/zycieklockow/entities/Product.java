@@ -162,4 +162,17 @@ public class Product
 
         images.add(image);
     }
+
+    @Override
+    public String toString()
+    {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", quantity=" + quantity +
+                ", category=" + category.getName() +
+                '}';
+    }
 }

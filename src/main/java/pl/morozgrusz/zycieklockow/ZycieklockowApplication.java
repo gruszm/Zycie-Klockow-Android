@@ -9,5 +9,4 @@ public class ZycieklockowApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ZycieklockowApplication.class, args);
 	}
-
 }

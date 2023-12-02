@@ -38,7 +38,7 @@ public class Product
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<Rating> ratings;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Image> images;
 
     public Product()

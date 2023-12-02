@@ -11,6 +11,10 @@
         <a href="#" th:href="@{/login}" sec:authorize="isAnonymous()" class="btn btn-success mt-3">Login</a>
         <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()" class="btn btn-success mt-3">Logout</a>
 
+        <div th:if="${productDeleted}" class="alert alert-success mt-3" role="alert">
+            Produkt o ID = <span th:text="${productDeleted}" /> został usunięty.
+        </div>
+
         <hr>
 
         <h1>List of products:</h1>
@@ -18,22 +22,29 @@
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
-                    <th>Id</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">Id</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Description</th>
                     <th>In Stock</th>
                     <th>Category</th>
+                    <th style="text-align: right;">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="product : ${products}">
-                    <td th:text="${product.id}" />
+                    <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${product.id}" />
                     <td th:text="${product.name}" />
                     <td th:text="${product.price}" />
                     <td th:text="${product.description}" />
                     <td th:text="${product.quantity}" />
                     <td th:text="${product.category.name}" />
+                    <td style="text-align: right;">
+                        <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{/products/delete/}" method="POST">
+                            <input type="hidden" name="productIdToDelete" th:value="${product.id}" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>

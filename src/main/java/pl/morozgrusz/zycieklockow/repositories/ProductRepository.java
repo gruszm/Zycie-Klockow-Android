@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import pl.morozgrusz.zycieklockow.DAOs.ProductDAO;
 import pl.morozgrusz.zycieklockow.entities.Product;
 
@@ -26,5 +27,17 @@ public class ProductRepository implements ProductDAO
         TypedQuery<Product> query = entityManager.createQuery("FROM Product", Product.class);
 
         return query.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(int id)
+    {
+        Product product = entityManager.find(Product.class, id);
+
+        if (product != null)
+        {
+            entityManager.remove(product);
+        }
     }
 }

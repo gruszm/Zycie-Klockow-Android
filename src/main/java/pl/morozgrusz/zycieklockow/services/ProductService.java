@@ -20,4 +20,9 @@ public class ProductService
     {
         return productRepository.findAll();
     }
+
+    public void deleteById(int id)
+    {
+        productRepository.deleteById(id);
+    }
 }

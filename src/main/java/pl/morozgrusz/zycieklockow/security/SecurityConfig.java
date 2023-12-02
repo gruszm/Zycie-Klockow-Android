@@ -28,6 +28,7 @@ public class SecurityConfig
                         .requestMatchers("/cart/**").authenticated()
                         .requestMatchers("/orders/**").hasRole("CUSTOMER")
                         .requestMatchers("/deliveryMethods/**").hasRole("ADMIN")
+                        .requestMatchers("/products/delete/").hasRole("ADMIN")
                         .anyRequest().permitAll())
                 .formLogin(login -> login
                         .permitAll())

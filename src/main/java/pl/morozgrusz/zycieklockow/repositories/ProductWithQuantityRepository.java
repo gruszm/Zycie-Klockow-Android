@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import pl.morozgrusz.zycieklockow.DAOs.ProductWithQuantityDAO;
 import pl.morozgrusz.zycieklockow.entities.ProductWithQuantity;
 
@@ -31,5 +32,17 @@ public class ProductWithQuantityRepository implements ProductWithQuantityDAO
         query.setParameter("email", email);
 
         return query.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(int id)
+    {
+        ProductWithQuantity productWithQuantity = entityManager.find(ProductWithQuantity.class, id);
+
+        if (productWithQuantity != null)
+        {
+            entityManager.remove(productWithQuantity);
+        }
     }
 }

@@ -22,4 +22,9 @@ public class ProductWithQuantityService
     {
         return productWithQuantityRepository.findByUserEmail(email);
     }
+
+    public void deleteById(int id)
+    {
+        productWithQuantityRepository.deleteById(id);
+    }
 }

@@ -7,4 +7,5 @@ import java.util.List;
 public interface ProductWithQuantityDAO
 {
     List<ProductWithQuantity> findByUserEmail(String email);
+    void deleteById(int id);
 }

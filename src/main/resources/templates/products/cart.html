@@ -27,6 +27,7 @@
                 <th>Quantity</th>
                 <th>Category</th>
                 <th>Total Value</th>
+                <th style="text-align: right;">Action</th>
             </thead>
             <tbody>
                 <tr th:each="pwq : ${productWithQuantityList}">
@@ -34,6 +35,12 @@
                     <td th:text="${pwq.quantity}" />
                     <td th:text="${pwq.product.category.name}" />
                     <td th:text="${pwq.getTotalValue()}" />
+                    <td style="text-align: right;">
+                        <form th:action="@{/cart/deleteCartElement/}" method="POST">
+                            <input type="hidden" name="cartElementId" th:value="${pwq.id}" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>

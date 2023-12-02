@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.morozgrusz.zycieklockow.entities.ProductWithQuantity;
 import pl.morozgrusz.zycieklockow.entities.User;
 import pl.morozgrusz.zycieklockow.services.ProductWithQuantityService;
@@ -37,5 +39,13 @@ public class CartController
         model.addAttribute("productWithQuantityList", productWithQuantityList);
 
         return "products/cart";
+    }
+
+    @PostMapping("/deleteCartElement/")
+    public String deleteCartElement(@RequestParam(name = "cartElementId") int id)
+    {
+        productWithQuantityService.deleteById(id);
+
+        return "redirect:/cart/";
     }
 }

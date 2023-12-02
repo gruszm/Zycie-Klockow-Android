@@ -40,6 +40,10 @@
                     <td th:text="${product.quantity}" />
                     <td th:text="${product.category.name}" />
                     <td style="text-align: right;">
+                        <form th:action="@{/cart/addCartElement/}" method="POST">
+                            <input type="hidden" name="productIdToAdd" th:value="${product.id}" />
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        </form>
                         <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{/products/delete/}" method="POST">
                             <input type="hidden" name="productIdToDelete" th:value="${product.id}" />
                             <button type="submit" class="btn btn-danger">Delete</button>

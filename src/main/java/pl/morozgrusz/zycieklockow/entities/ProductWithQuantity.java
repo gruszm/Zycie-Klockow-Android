@@ -87,4 +87,12 @@ public class ProductWithQuantity
     {
         return product.getPrice().multiply(BigDecimal.valueOf(quantity));
     }
+
+    public void incrementQuantity()
+    {
+        if (quantity < product.getQuantity())
+        {
+            quantity++;
+        }
+    }
 }

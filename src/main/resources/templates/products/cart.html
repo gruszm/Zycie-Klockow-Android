@@ -25,7 +25,7 @@
             <thead class="table-dark">
                 <th>Product Name</th>
                 <th>Quantity</th>
-                <th>Category</th>
+                <th>Unit Price</th>
                 <th>Total Value</th>
                 <th style="text-align: right;">Action</th>
             </thead>
@@ -33,7 +33,7 @@
                 <tr th:each="pwq : ${productWithQuantityList}">
                     <td th:text="${pwq.product.name}" />
                     <td th:text="${pwq.quantity}" />
-                    <td th:text="${pwq.product.category.name}" />
+                    <td th:text="${pwq.product.price}" />
                     <td th:text="${pwq.getTotalValue()}" />
                     <td style="text-align: right;">
                         <form th:action="@{/cart/deleteCartElement/}" method="POST">
@@ -46,7 +46,7 @@
         </table>
 
         <div class="cart-total">
-            <strong>Cart Value:</strong> <span th:text="${totalCartValue}"></span>
+            <strong>In Total:</strong> <span th:text="${totalCartValue}"></span>
         </div>
     </div>
 </body>

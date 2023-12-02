@@ -45,4 +45,11 @@ public class ProductWithQuantityRepository implements ProductWithQuantityDAO
             entityManager.remove(productWithQuantity);
         }
     }
+
+    @Override
+    @Transactional
+    public void save(ProductWithQuantity productWithQuantity)
+    {
+        entityManager.merge(productWithQuantity);
+    }
 }

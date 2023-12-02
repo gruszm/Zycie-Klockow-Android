@@ -31,8 +31,7 @@ public class Product
     @JoinColumn(name = "category_fk")
     private Category category;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,
-               cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ProductWithQuantity> productsWithQuantities;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)

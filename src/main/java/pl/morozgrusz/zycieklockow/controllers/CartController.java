@@ -48,4 +48,12 @@ public class CartController
 
         return "redirect:/cart/";
     }
+
+    @PostMapping("/addCartElement/")
+    public String addCartElement(@RequestParam(name = "productIdToAdd") int id, Principal principal)
+    {
+        productWithQuantityService.addProductToCartByEmail(principal.getName(), id);
+
+        return "redirect:/products/";
+    }
 }

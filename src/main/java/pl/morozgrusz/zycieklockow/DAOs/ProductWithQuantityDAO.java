@@ -8,4 +8,5 @@ public interface ProductWithQuantityDAO
 {
     List<ProductWithQuantity> findByUserEmail(String email);
     void deleteById(int id);
+    void save(ProductWithQuantity productWithQuantity);
 }

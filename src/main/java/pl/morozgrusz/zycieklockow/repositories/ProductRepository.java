@@ -40,4 +40,10 @@ public class ProductRepository implements ProductDAO
             entityManager.remove(product);
         }
     }
+
+    @Override
+    public Product findById(int id)
+    {
+        return entityManager.find(Product.class, id);
+    }
 }

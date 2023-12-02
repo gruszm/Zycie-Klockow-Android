@@ -2,6 +2,7 @@ package pl.morozgrusz.zycieklockow.entities;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -188,5 +189,10 @@ public class User
     public void setOrders(List<Order> orders)
     {
         this.orders = orders;
+    }
+
+    public BigDecimal getTotalCartValue()
+    {
+        return productsWithQuantities.stream().map(ProductWithQuantity::getTotalValue).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

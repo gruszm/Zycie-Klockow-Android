@@ -2,6 +2,8 @@ package pl.morozgrusz.zycieklockow.entities;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "product_with_quantity")
 public class ProductWithQuantity
@@ -79,5 +81,10 @@ public class ProductWithQuantity
     public void setOrder(Order order)
     {
         this.order = order;
+    }
+
+    public BigDecimal getTotalValue()
+    {
+        return product.getPrice().multiply(BigDecimal.valueOf(quantity));
     }
 }

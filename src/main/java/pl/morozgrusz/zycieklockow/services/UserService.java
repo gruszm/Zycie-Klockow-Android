@@ -23,7 +23,7 @@ public class UserService
 
     public User findUserByEmail(String email)
     {
-        return userRepository.findUserByEmail(email);
+        return userRepository.findByEmail(email);
     }
 
     public void save(UserDTO userDTO)

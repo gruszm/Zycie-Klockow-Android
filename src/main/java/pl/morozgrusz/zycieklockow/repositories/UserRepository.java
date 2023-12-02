@@ -21,7 +21,7 @@ public class UserRepository implements UserDAO
     }
 
     @Override
-    public User findUserByEmail(String email)
+    public User findByEmail(String email)
     {
         TypedQuery<User> query = entityManager.createQuery("FROM User u where u.email = :email", User.class);
 

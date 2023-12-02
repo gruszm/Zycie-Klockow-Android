@@ -25,6 +25,7 @@ public class SecurityConfig
     {
         httpSecurity.authorizeHttpRequests(customizer -> customizer
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/cart/**").authenticated()
                         .requestMatchers("/orders/**").hasRole("CUSTOMER")
                         .requestMatchers("/deliveryMethods/**").hasRole("ADMIN")
                         .anyRequest().permitAll())

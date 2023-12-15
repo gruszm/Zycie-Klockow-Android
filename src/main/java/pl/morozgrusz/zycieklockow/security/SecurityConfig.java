@@ -30,6 +30,7 @@ public class SecurityConfig
                         .requestMatchers("/deliveryMethods/*/").hasRole("ADMIN")
                         .requestMatchers("/products/*/").hasRole("ADMIN")
                         .requestMatchers("/cart/addCartElement/").authenticated()
+                        .requestMatchers("/addresses/**").authenticated()
                         .anyRequest().permitAll())
                 .formLogin(login -> login
                         .permitAll())

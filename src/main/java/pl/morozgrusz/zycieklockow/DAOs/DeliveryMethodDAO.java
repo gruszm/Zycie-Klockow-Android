@@ -7,4 +7,5 @@ import java.util.List;
 public interface DeliveryMethodDAO
 {
     List<DeliveryMethod> findAll();
+    void save(DeliveryMethod deliveryMethod);
 }

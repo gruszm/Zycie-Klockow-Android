@@ -18,6 +18,11 @@ public class DeliveryMethodService
         this.deliveryMethodRepository = deliveryMethodRepository;
     }
 
+    public void save(DeliveryMethod deliveryMethod)
+    {
+        deliveryMethodRepository.save(deliveryMethod);
+    }
+
     public List<DeliveryMethod> findAll()
     {
         return deliveryMethodRepository.findAll();

@@ -20,7 +20,13 @@
         <a href="#" th:href="@{/login}" sec:authorize="isAnonymous()" class="btn btn-success mt-3">Login</a>
         <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()" class="btn btn-success mt-3">Logout</a>
 
+        <div th:if="${addedDeliveryMethodName}" class="alert alert-success mt-3" role="alert">
+            Metoda dostawy o nazwie "<span th:text="${addedDeliveryMethodName}" />" z ceną <span th:text="${addedDeliveryMethodPrice}" /> zł została dodana pomyślnie.
+        </div>
+
         <hr>
+
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/deliveryMethods/addForm/}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">Add Delivery Method</a>
 
         <h1>Delivery methods list:</h1>
 

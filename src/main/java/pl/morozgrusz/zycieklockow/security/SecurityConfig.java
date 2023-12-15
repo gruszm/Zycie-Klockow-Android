@@ -27,9 +27,8 @@ public class SecurityConfig
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/cart/**").authenticated()
                         .requestMatchers("/orders/**").hasRole("CUSTOMER")
-                        .requestMatchers("/deliveryMethods/**").hasRole("ADMIN")
-                        .requestMatchers("/products/").hasRole("CUSTOMER")
-                        .requestMatchers("/products/**").hasRole("ADMIN")
+                        .requestMatchers("/deliveryMethods/*/").hasRole("ADMIN")
+                        .requestMatchers("/products/*/").hasRole("ADMIN")
                         .requestMatchers("/cart/addCartElement/").authenticated()
                         .anyRequest().permitAll())
                 .formLogin(login -> login

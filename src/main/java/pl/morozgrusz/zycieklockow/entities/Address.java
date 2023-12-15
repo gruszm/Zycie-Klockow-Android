@@ -123,7 +123,7 @@ public class Address
 
     public String getZipCode()
     {
-        return zipCode;
+        return zipCode.substring(0, 2) + '-' + zipCode.substring(2);
     }
 
     public void setZipCode(String zipCode)
@@ -153,7 +153,10 @@ public class Address
 
     public String getPhoneNumber()
     {
-        return phoneNumber;
+        return '+' + phoneNumber.substring(0, 2) + ' '
+                + phoneNumber.substring(2, 5) + ' '
+                + phoneNumber.substring(5, 8) + ' '
+                + phoneNumber.substring(8);
     }
 
     public void setPhoneNumber(String phoneNumber)

@@ -41,6 +41,6 @@ public class UserRepository implements UserDAO
     @Transactional
     public void save(User user)
     {
-        entityManager.persist(user);
+        entityManager.merge(user);
     }
 }

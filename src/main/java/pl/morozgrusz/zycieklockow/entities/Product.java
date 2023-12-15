@@ -171,7 +171,7 @@ public class Product
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 ", quantity=" + quantity +
-                ", category=" + category.getName() +
+                ", category=" + category +
                 '}';
     }
 }

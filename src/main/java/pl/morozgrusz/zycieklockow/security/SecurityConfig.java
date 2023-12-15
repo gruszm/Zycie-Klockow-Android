@@ -28,7 +28,8 @@ public class SecurityConfig
                         .requestMatchers("/cart/**").authenticated()
                         .requestMatchers("/orders/**").hasRole("CUSTOMER")
                         .requestMatchers("/deliveryMethods/**").hasRole("ADMIN")
-                        .requestMatchers("/products/delete/").hasRole("ADMIN")
+                        .requestMatchers("/products/").hasRole("CUSTOMER")
+                        .requestMatchers("/products/**").hasRole("ADMIN")
                         .requestMatchers("/cart/addCartElement/").authenticated()
                         .anyRequest().permitAll())
                 .formLogin(login -> login

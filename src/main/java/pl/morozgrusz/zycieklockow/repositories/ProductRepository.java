@@ -22,6 +22,13 @@ public class ProductRepository implements ProductDAO
     }
 
     @Override
+    @Transactional
+    public void save(Product product)
+    {
+        entityManager.merge(product);
+    }
+
+    @Override
     public List<Product> findAll()
     {
         TypedQuery<Product> query = entityManager.createQuery("FROM Product", Product.class);

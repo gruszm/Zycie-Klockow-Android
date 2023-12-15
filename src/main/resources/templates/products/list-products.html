@@ -15,7 +15,13 @@
             Produkt o ID = <span th:text="${productDeleted}" /> został usunięty.
         </div>
 
+        <div th:if="${addedProductName}" class="alert alert-success mt-3" role="alert">
+            Produkt o nazwie "<span th:text="${addedProductName}" />" z ceną <span th:text="${addedProductPrice}" /> zł za sztukę w ilości <span th:text="${addedProductQuantity}"/> został dodany pomyślnie.
+        </div>
+
         <hr>
+
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/products/addForm/}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">Add Product</a>
 
         <h1>List of products:</h1>
 

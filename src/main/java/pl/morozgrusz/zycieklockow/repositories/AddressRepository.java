@@ -59,4 +59,16 @@ public class AddressRepository implements AddressDAO
 
         return query.getResultList();
     }
+
+    @Override
+    @Transactional
+    public void deleteById(int id)
+    {
+        Address address = entityManager.find(Address.class, id);
+
+        if (address != null)
+        {
+            entityManager.remove(address);
+        }
+    }
 }

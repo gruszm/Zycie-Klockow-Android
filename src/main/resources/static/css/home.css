@@ -5,13 +5,13 @@
     font-family: "Nunito", sans-serif;
 }
 .container{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: #FDFFE5;
 }
 .nav-bar {
     background-color: #CD8D7B;
-    width: 100vw;
+    width: 100%;
     height: 15vh;
     display: flex;
     justify-content: space-between;

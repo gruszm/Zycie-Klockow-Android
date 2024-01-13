@@ -1,6 +1,7 @@
 package pl.morozgrusz.zycieklockow.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "address")
@@ -12,30 +13,38 @@ public class Address
     private int id;
 
     @Column(name = "first_name")
+    @NotNull(message = "This field is required")
     private String firstName;
 
     @Column(name = "last_name")
+    @NotNull(message = "This field is required")
     private String lastName;
 
     @Column(name = "street")
+    @NotNull(message = "This field is required")
     private String street;
 
     @Column(name = "building_number")
-    private short buildingNumber;
+    @NotNull(message = "This field is required")
+    private Short buildingNumber;
 
     @Column(name = "apartment_number")
-    private short apartmentNumber;
+    private Short apartmentNumber;
 
     @Column(name = "zip_code", length = 6)
+    @NotNull(message = "This field is required")
     private String zipCode;
 
     @Column(name = "city")
+    @NotNull(message = "This field is required")
     private String city;
 
     @Column(name = "country")
+    @NotNull(message = "This field is required")
     private String country;
 
     @Column(name = "phone_number", length = 11)
+    @NotNull(message = "This field is required")
     private String phoneNumber;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
@@ -101,29 +110,36 @@ public class Address
         this.street = street;
     }
 
-    public short getBuildingNumber()
+    public Short getBuildingNumber()
     {
         return buildingNumber;
     }
 
-    public void setBuildingNumber(short buildingNumber)
+    public void setBuildingNumber(Short buildingNumber)
     {
         this.buildingNumber = buildingNumber;
     }
 
-    public short getApartmentNumber()
+    public Short getApartmentNumber()
     {
         return apartmentNumber;
     }
 
-    public void setApartmentNumber(short apartmentNumber)
+    public void setApartmentNumber(Short apartmentNumber)
     {
         this.apartmentNumber = apartmentNumber;
     }
 
     public String getZipCode()
     {
-        return zipCode.substring(0, 2) + '-' + zipCode.substring(2);
+        String zipCodeFormatted = "";
+
+        if (zipCode != null)
+        {
+            zipCodeFormatted = zipCode.substring(0, 2) + '-' + zipCode.substring(2);
+        }
+
+        return zipCodeFormatted;
     }
 
     public void setZipCode(String zipCode)
@@ -153,10 +169,21 @@ public class Address
 
     public String getPhoneNumber()
     {
-        return '+' + phoneNumber.substring(0, 2) + ' '
-                + phoneNumber.substring(2, 5) + ' '
-                + phoneNumber.substring(5, 8) + ' '
-                + phoneNumber.substring(8);
+        String phoneNumberFormatted = "";
+
+        if (phoneNumber != null)
+        {
+            phoneNumberFormatted = '+' + phoneNumber.substring(0, 2) + ' '
+                    + phoneNumber.substring(2, 5) + ' '
+                    + phoneNumber.substring(5, 8) + ' '
+                    + phoneNumber.substring(8);
+        }
+        else
+        {
+            phoneNumberFormatted += "+48";
+        }
+
+        return phoneNumberFormatted;
     }
 
     public void setPhoneNumber(String phoneNumber)
@@ -172,5 +199,22 @@ public class Address
     public void setUser(User user)
     {
         this.user = user;
+    }
+
+    public String getFullAddress()
+    {
+        String addressFormatted = "";
+
+        addressFormatted += "ul. "
+                + street
+                + " "
+                + buildingNumber;
+
+        if (apartmentNumber != null)
+        {
+            addressFormatted += ", m. " + apartmentNumber;
+        }
+
+        return addressFormatted;
     }
 }

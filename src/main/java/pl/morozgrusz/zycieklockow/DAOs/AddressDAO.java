@@ -10,4 +10,5 @@ public interface AddressDAO
     void save(Address address);
     List<Address> findByUserId(int id);
     List<Address> findByUserEmail(String email);
+    void deleteById(int id);
 }

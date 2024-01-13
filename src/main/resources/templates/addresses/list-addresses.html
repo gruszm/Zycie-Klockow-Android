@@ -14,6 +14,16 @@
 
     <hr>
 
+    <a th:href="@{/addresses/addForm/}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">Add Address</a>
+
+    <div th:if="${addedAddress}" class="alert alert-success mt-3" role="alert">
+        Adres został dodany pomyślnie.
+    </div>
+
+    <div th:if="${addressDeleted}" class="alert alert-success mt-3" role="alert">
+        Adres został usunięty.
+    </div>
+
     <h1>Addresses list:</h1>
 
     <table class="table table-bordered table-striped">
@@ -25,17 +35,24 @@
         <th>City</th>
         <th>Country</th>
         <th>Phone number</th>
+        <th>Action</th>
         </thead>
 
         <tbody>
         <tr th:each="address : ${addresses}">
             <td th:text="${address.firstName}" />
             <td th:text="${address.lastName}" />
-            <td th:text="'ul. ' + ${address.street} + ' ' + ${address.buildingNumber} + ', m. ' + ${address.apartmentNumber}" />
+            <td th:text="${address.fullAddress}" />
             <td th:text="${address.zipCode}" />
             <td th:text="${address.city}" />
             <td th:text="${address.country}" />
             <td th:text="${address.phoneNumber}" />
+            <td style="text-align: right;">
+                <form th:action="@{/addresses/delete/}" method="POST">
+                    <input type="hidden" name="addressIdToDelete" th:value="${address.id}" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

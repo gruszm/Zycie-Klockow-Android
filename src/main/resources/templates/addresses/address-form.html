@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add product form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"></head>
+</head>
+<body>
+<div class="container">
+    <a href="#" th:href="@{/}" class="btn btn-primary mt-3" tabindex="-1" role="button" aria-disabled="true">Home</a>
+    <a href="#" th:href="@{/addresses/}" class="btn btn-success mt-3" tabindex="-1" role="button" aria-disabled="true">Back</a>
+    <hr>
+    <h1>Add a new product:</h1>
+    <form th:action="@{/addresses/processAddressForm/}" th:object="${address}" method="POST">
+        <input type="text" class="mb-2" th:field="*{firstName}" placeholder="First Name"/>
+        <small class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" />
+        <br>
+        <input type="text" class="mb-2" th:field="*{lastName}" placeholder="Last Name"/>
+        <small class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" />
+        <br>
+        <input type="text" class="mb-2" th:field="*{street}" placeholder="Street"/>
+        <small class="error" th:if="${#fields.hasErrors('street')}" th:errors="*{street}" />
+        <br>
+        <input type="text" class="mb-2" th:field="*{buildingNumber}" placeholder="Building Number"/>
+        <small class="error" th:if="${#fields.hasErrors('buildingNumber')}" th:errors="*{buildingNumber}" />
+        <br>
+        <input type="text" class="mb-2" th:field="*{apartmentNumber}" placeholder="Apartment Number"/>
+        <small class="error" th:if="${#fields.hasErrors('apartmentNumber')}" th:errors="*{apartmentNumber}" />
+        (optional)
+        <br>
+        <input type="text" class="mb-2" th:field="*{zipCode}" placeholder="Zip Code"/>
+        <small class="error" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}" />
+        <br>
+        <input type="text" class="mb-2" th:field="*{city}" placeholder="City"/>
+        <small class="error" th:if="${#fields.hasErrors('city')}" th:errors="*{city}" />
+        <br>
+        <input type="text" class="mb-2" th:field="*{country}" placeholder="Country"/>
+        <small class="error" th:if="${#fields.hasErrors('country')}" th:errors="*{country}" />
+        <br>
+        <input type="number" class="mb-2" th:field="*{phoneNumber}" placeholder="Phone Number"/>
+        <small class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" />
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>

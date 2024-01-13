@@ -2,38 +2,61 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Wix Madefor Display", sans-serif;
-}
-body{
-    width: 100%;
-    height: 100vh;
+    font-family: "Nunito", sans-serif;
 }
 .nav-bar {
     background-color: #CD8D7B;
-    width: 100%;
-    height: 15%;
+    width: 100vw;
+    height: 15vh;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
+    align-items: center;
 }
-
-.nav-icon {
+.nav-icon, .nav-icon-1{
     height: 100%;
 }
+.right-side-nav-bar{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.cart-icon, .cart-icon-2{
+    height: 100%;
+}
+.login-button, .register-button, .logout-button{
+    background-color: #FDFFE5;
+    color: #F6C33F; /* Assuming you want white text */
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    text-decoration: none; /* Remove underline from links */
+    width: 7vw;
+    height: 6vh;
+    border: 5px solid #00263B;
+    margin-right: 70px; /* Space between the buttons */
+    border-radius: 1rem; /* Rounded corners for buttons */
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    transition: background-color 0.3s ease, transform 0.5s ease; /* Ustawienie efektu przejścia */
 
-.cart-icon {
-    height: 70%;
-    margin-left: auto;
+}
+.login-button:hover, .register-button:hover, .logout-button:hover{
+    background-color: #F6C33F;
+    color: #FDFFE5;
+    transform: translate(3px, 3px);
 }
 
 .container {
     background-color: #00E3F9;
-    -webkit-box-shadow: 5px 12px 13px -6px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 5px 12px 13px -6px rgba(66, 68, 90, 1);
-    box-shadow: 5px 12px 13px -6px rgba(66, 68, 90, 1);
-    width: 30%;
-    height: 50%;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    width: 30vw;
+    height: 70vh;
     border-radius: 1rem;
     padding: 1rem;
     margin-top: 5%;
@@ -46,7 +69,7 @@ body{
 }
 .form-control {
     border-radius: 25px; /* Rounded corners */
-    width: 90%; /* Percentage of the container width */
+    width: 9vw; /* Percentage of the container width */
     margin: 10px auto; /* Center the input fields */
     height: 40px; /* Fixed height for uniformity */
     background-color: #FDFFE5; /* Light background */
@@ -58,7 +81,7 @@ body{
 }
 
 .submit-button-form {
-    width: 90%; /* Match input field width */
+    width: 9vw; /* Match input field width */
     height: 40px; /* Match input field height */
     background-color: #264653; /* Button background color */
     color: white; /* Button text color */
@@ -80,6 +103,13 @@ body{
     display: block; /* Make sure it takes up its own line */
     font-size: 0.85em; /* Smaller font size for error messages */
     margin-top: 5px; /* Margin on top of the error message */
+}
+
+footer{
+    width: 100vw;
+    height: 12vh;
+    margin-top: 100px;
+    background-color: #001F31;
 }
 
 

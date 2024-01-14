@@ -1,0 +1,28 @@
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: block; }
+    100% { opacity: 0; display: none; }
+}
+
+.alert{
+    width: 20%;
+    height: 20vh;
+    background-color: #6bda1b;
+    color: white;
+    position: fixed;
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center; /* Centruje w poziomie */
+    align-items: center; /* Centruje w pionie */
+    display: flex;
+    margin-top: 20%;
+    border-radius: 2rem;
+    margin-left: 40%;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards, fadeOut 1s ease-out 1s forwards;
+}

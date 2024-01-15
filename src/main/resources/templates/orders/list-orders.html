@@ -14,22 +14,26 @@
 
         <hr>
 
+        <div th:if="${orderSubmitted}" class="alert alert-success mt-3" role="alert">
+            Zamówienie na kwotę <span th:text="${orderSubmitted}"/> zostało złożone pomyślnie.
+        </div>
+
         <h1>Orders list:</h1>
 
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
-                <th>Id</th>
                 <th>Order date</th>
                 <th>User name</th>
                 <th>Delivery method</th>
+                <th>Order Value</th>
             </thead>
 
             <tbody>
                 <tr th:each="order : ${orders}">
-                    <td th:text="${order.id}" />
                     <td th:text="${order.orderDate}" />
                     <td th:text="${order.user.firstName} + ' ' + ${order.user.lastName}" />
                     <td th:text="${order.deliveryMethod.name}" />
+                    <td th:text="${order.totalValue} + ' zł'" />
                 </tr>
             </tbody>
         </table>

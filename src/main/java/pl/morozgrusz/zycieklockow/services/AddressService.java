@@ -54,4 +54,9 @@ public class AddressService
     {
         addressRepository.deleteById(id);
     }
+
+    public Address findById(int id)
+    {
+        return addressRepository.findById(id);
+    }
 }

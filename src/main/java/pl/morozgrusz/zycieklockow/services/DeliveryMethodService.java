@@ -27,4 +27,9 @@ public class DeliveryMethodService
     {
         return deliveryMethodRepository.findAll();
     }
+
+    public DeliveryMethod findById(int id)
+    {
+        return deliveryMethodRepository.findById(id);
+    }
 }

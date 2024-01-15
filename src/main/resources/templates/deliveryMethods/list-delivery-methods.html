@@ -35,19 +35,13 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Order IDs with users</th>
             </thead>
 
             <tbody>
                 <tr th:each="deliveryMethod : ${deliveryMethods}">
                     <td th:text="${deliveryMethod.id}" />
                     <td th:text="${deliveryMethod.name}" />
-                    <td th:text="${deliveryMethod.price}" />
-                    <td>
-                        <ul>
-                            <li th:each="order : ${deliveryMethod.orders}" th:text="${order.id} + ' - ' + ${order.user.firstName} + ' ' + ${order.user.lastName}" />
-                        </ul>
-                    </td>
+                    <td th:text="${deliveryMethod.price} + ' zł'" />
                 </tr>
             </tbody>
         </table>

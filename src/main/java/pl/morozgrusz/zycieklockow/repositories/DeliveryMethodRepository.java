@@ -35,4 +35,17 @@ public class DeliveryMethodRepository implements DeliveryMethodDAO
 
         return query.getResultList();
     }
+
+    @Override
+    public DeliveryMethod findById(int id)
+    {
+        try
+        {
+            return entityManager.find(DeliveryMethod.class, id);
+        }
+        catch (IllegalArgumentException e)
+        {
+            return null;
+        }
+    }
 }

@@ -71,4 +71,17 @@ public class AddressRepository implements AddressDAO
             entityManager.remove(address);
         }
     }
+
+    @Override
+    public Address findById(int id)
+    {
+        try
+        {
+            return entityManager.find(Address.class, id);
+        }
+        catch (IllegalArgumentException e)
+        {
+            return null;
+        }
+    }
 }

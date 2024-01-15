@@ -41,7 +41,7 @@
                 <tr th:each="product : ${products}">
                     <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${product.id}" />
                     <td th:text="${product.name}" />
-                    <td th:text="${product.price}" />
+                    <td th:text="${product.price} + ' zł'" />
                     <td th:text="${product.description}" />
                     <td th:text="${product.quantity}" />
                     <td th:text="${product.category.name}" />

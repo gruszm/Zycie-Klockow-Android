@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import pl.morozgrusz.zycieklockow.DAOs.OrderDAO;
 import pl.morozgrusz.zycieklockow.entities.Order;
 
@@ -25,5 +26,12 @@ public class OrderRepository implements OrderDAO
     {
         TypedQuery<Order> query = entityManager.createQuery("FROM Order", Order.class);
         return query.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void save(Order order)
+    {
+        entityManager.merge(order);
     }
 }

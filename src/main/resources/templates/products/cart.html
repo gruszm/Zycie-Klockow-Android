@@ -48,7 +48,13 @@
         </table>
 
         <div class="cart-total">
-            <strong>In Total:</strong> <span th:text="${totalCartValue}"></span>
+            <strong>In Total:</strong> <span th:text="${totalCartValue} + ' zł'"></span>
+        </div>
+
+        <br>
+
+        <div style="text-align: right;">
+            <a th:href="@{/orders/selectDeliveryMethod/}" class="btn btn-success">Proceed</a>
         </div>
     </div>
 </body>

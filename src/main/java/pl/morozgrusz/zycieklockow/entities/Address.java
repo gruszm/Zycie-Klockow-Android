@@ -3,6 +3,8 @@ package pl.morozgrusz.zycieklockow.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
+
 @Entity
 @Table(name = "address")
 public class Address
@@ -50,6 +52,10 @@ public class Address
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "user_fk")
     private User user;
+
+    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY,
+               cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Order> orders;
 
     public Address()
     {
@@ -136,7 +142,9 @@ public class Address
 
         if (zipCode != null)
         {
-            zipCodeFormatted = zipCode.substring(0, 2) + '-' + zipCode.substring(2);
+            zipCodeFormatted = zipCode.substring(0, 2)
+                    + (zipCode.contains("-") ? "" : '-')
+                    + zipCode.substring(2);
         }
 
         return zipCodeFormatted;
@@ -216,5 +224,15 @@ public class Address
         }
 
         return addressFormatted;
+    }
+
+    public List<Order> getOrders()
+    {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders)
+    {
+        this.orders = orders;
     }
 }

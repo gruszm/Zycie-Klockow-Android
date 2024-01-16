@@ -32,8 +32,11 @@ public class SecurityConfig
                         .requestMatchers("/cart/addCartElement/").authenticated()
                         .requestMatchers("/addresses/**").authenticated()
                         .anyRequest().permitAll())
-                .formLogin(login -> login
-                        .permitAll())
+                .formLogin(login ->
+                        login
+                                .loginPage("/login")
+                                .loginProcessingUrl("/authenticate")
+                                .permitAll())
                 .logout(logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/?logout")

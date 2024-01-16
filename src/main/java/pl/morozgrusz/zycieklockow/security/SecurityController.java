@@ -24,6 +24,12 @@ public class SecurityController
         this.userService = userService;
     }
 
+    @GetMapping("/login")
+    public String loginForm()
+    {
+        return "security/login-form";
+    }
+
     @GetMapping("/register")
     public String getRegistrationForm(Model model)
     {

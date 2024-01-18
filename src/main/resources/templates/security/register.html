@@ -5,44 +5,62 @@
     <title>Registration Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
-    <link rel="stylesheet" th:href="@{/css/register.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
     <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
     <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
 </head>
 <body>
-<div class="nav-bar">
-    <a href="#" th:href="@{/}" class="nav-icon-1" tabindex="-1" role="button" aria-disabled="true">
-        <img th:src="@{/images/nav-icon.png}" alt="Nav Icon" class="nav-icon" />
-    </a>
-
-    <div class="right-side-nav-bar">
-        <a href="#" th:href="@{/login}" sec:authorize="isAnonymous()" class="login-button">Login</a>
-        <a href="#" th:href="@{/register}" sec:authorize="isAnonymous()" class="register-button">Register</a>
-        <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()" class="logout-button">Logout</a>
-        <a th:href="@{/cart/}" class="cart-icon-2" tabindex="-1" role="button" aria-disabled="true">
-            <img th:src="@{/images/cart-icon.png}" alt="Cart" class="cart-icon" />
+    <div class="nav-bar">
+        <a href="#" th:href="@{/}" class="nav-icon-1" tabindex="-1" role="button" aria-disabled="true">
+            <img th:src="@{/images/nav-icon.png}" alt="Nav Icon" class="nav-icon" />
         </a>
+
+        <div class="right-side-nav-bar">
+            <a href="#" th:href="@{/login}" sec:authorize="isAnonymous()" class="login-button">Login</a>
+            <a href="#" th:href="@{/register}" sec:authorize="isAnonymous()" class="register-button">Register</a>
+            <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()" class="logout-button">Logout</a>
+            <a th:href="@{/cart/}" class="cart-icon-2" tabindex="-1" role="button" aria-disabled="true">
+                <img th:src="@{/images/cart-icon.png}" alt="Cart" class="cart-icon" />
+            </a>
+        </div>
     </div>
-</div>
+    <div class="under-nav-bar-menu">
+        <a th:href="@{/addresses/}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Your addresses</a>
+        <a th:href="@{/orders/}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List of all orders</a>
+        <a th:href="@{/deliveryMethods/}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">List of all delivery methods</a>
+        <a th:href="@{/products/}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">List of products</a>
+    </div>
     <div class="container">
-        <form class="mt-3" th:object="${user_dto}" th:action="@{/processRegistration}" method="POST">
-            <input type="text" class="form-control" th:field="*{email}" placeholder="Email" />
-            <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
-            <br>
-            <input type="password" class="form-control" th:field="*{password}" placeholder="Password" />
-            <small class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
-            <br>
-            <input type="password" class="form-control" th:field="*{repeatPassword}" placeholder="Repeat Password" />
-            <small class="error" th:if="${#fields.hasErrors('repeatPassword')}" th:errors="*{repeatPassword}" />
+        <form class="form-register" th:object="${user_dto}" th:action="@{/processRegistration}" method="POST">
+            Enter your first name:
             <br>
             <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name" />
             <small class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" />
             <br>
+            Enter your middle name:
+            <br>
             <input type="text" class="form-control" th:field="*{middleName}" placeholder="Middle Name (optional)" />
             <small class="error" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" />
             <br>
+            Enter your last name:
+            <br>
             <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name" />
             <small class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" />
+            <br>
+            Enter your email:
+            <br>
+            <input type="text" class="form-control" th:field="*{email}" placeholder="Email" />
+            <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
+            <br>
+            Enter your password:
+            <br>
+            <input type="password" class="form-control" th:field="*{password}" placeholder="Password" />
+            <small class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
+            <br>
+            Enter your password again:
+            <br>
+            <input type="password" class="form-control" th:field="*{repeatPassword}" placeholder="Repeat Password" />
+            <small class="error" th:if="${#fields.hasErrors('repeatPassword')}" th:errors="*{repeatPassword}" />
             <br>
             <button type="submit" class="submit-button-form">Submit</button>
         </form>
@@ -54,7 +72,35 @@
 
     </div>
     <footer>
-
+        <div class=footer-div>
+            <div class="footer-content">
+                <div class="footer-logo-left-side">
+                    <img th:src="@{/images/nav-icon.png}" alt="Nav Icon" class="nav-icon-footer" />
+                </div>
+                <div class="footer-middle-side">
+                    <h2>Dane kontaktowe</h2>
+                    <a>
+                        Zycieklockow.pl <br> Łódź, ul. Al. Politechniki 69 <br> Numer telefonu: +48 213 742 066 <br> adres email: zycieklockow@gmail.com
+                    </a>
+                </div>
+                <div class="footer-right-side">
+                    <h2>O nas</h2>
+                    <a>
+                        RODO
+                        <br>
+                        Kontakt
+                        <br>
+                        Informacje
+                        <br>
+                        Sprzedaż
+                        <br>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-down-copyrights">
+                <a>Zycieklockow.pl to Twój sklep z zestawami klocków LEGO i innych konstrukcyjnych przygód. Jesteśmy dumni z oferowania oryginalnych produktów LEGO, a LEGO, LEGO Minifigures, LEGO Star Wars i inne są zastrzeżonymi znakami towarowymi LEGO Group. ©2024 LEGO Group. Wszelkie prawa zastrzeżone | Sklep z klockami LEGO zycieklockow.pl | 2024</a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

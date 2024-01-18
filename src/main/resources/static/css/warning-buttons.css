@@ -10,7 +10,7 @@
 }
 
 .alert{
-    width: 20%;
+    width: 30%;
     height: 20vh;
     background-color: #6bda1b;
     color: white;
@@ -20,9 +20,9 @@
     justify-content: center; /* Centruje w poziomie */
     align-items: center; /* Centruje w pionie */
     display: flex;
-    margin-top: 20%;
+    margin-top: 15%;
     border-radius: 2rem;
-    margin-left: 40%;
+    margin-left: 35%;
     opacity: 0;
     animation: fadeIn 1s ease-in forwards, fadeOut 1s ease-out 1s forwards;
 }

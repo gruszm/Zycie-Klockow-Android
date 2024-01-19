@@ -58,6 +58,186 @@ body{
 
 /* END | NAV BAR SECTION */
 
+/* START | ABOUT US SECTION */
+.About-us {
+    width: 100%;
+    height: 150vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    color: #000; /* You had an incomplete property here */
+}
+
+.about-us-text-welcome {
+    width: 60%;
+    height: 150vh;
+    background-color: whitesmoke;
+}
+
+.about-us-text-welcome > .welcome-header > h1 {
+    font-size: 5rem;
+    color: #00263B;
+}
+.welcome-image{
+    height: 50vh;
+    display: flex;
+    margin-top: 250px;
+    justify-content: center;
+}
+
+.about-us-text-welcome > .welcome-header {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us-text-welcome > .welcome-text {
+    width: 60%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 90px auto auto;
+    flex-direction: row;
+}
+
+.about-us-text-welcome > .welcome-text > a {
+    color: #00263B;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 2.5rem;
+}
+.Rodo{
+    width: 100%;
+    height: 70vh;
+    background-color: #017DE2;
+    display: flex;
+}
+.rodo-left-text{
+    width: 60%;
+    height: 70vh;
+
+}
+.rodo-right-image{
+    width: 40%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rodo-lawyer-image{
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+
+}
+.rodo-left-text > .rodo-left-text-header{
+    width: 100%;
+    height: 20%;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.rodo-left-text > .rodo-left-text-header > h1{
+    font-size: 3.5rem;
+    color: white;
+}
+.rodo-left-text > .rodo-left-text-paragraph{
+    width: 60%;
+    height: 10vh;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 170px auto auto;
+    flex-direction: column;
+}
+.rodo-left-text > .rodo-left-text-paragraph > a{
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 2.5rem;
+
+}
+.contact-us{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    color: #000; /* You had an incomplete property here */
+}
+.contact-us > .contact-us-middle{
+    width: 60%;
+    height: 80vh;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contact-us > .contact-us-middle > .contact-us-header{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.contact-us > .contact-us-middle > .contact-us-bottom {
+    width: 100%;
+    height: 80%;
+    display: flex;
+}
+.contact-us > .contact-us-middle > .contact-us-header > h1 {
+    font-size: 3.5rem;
+    color: #00263B;
+}
+.contact-us > .contact-us-middle > .contact-us-bottom > .contact-us-text{
+    width: 50%;
+    height: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.contact-us > .contact-us-middle > .contact-us-bottom > .contact-us-text > a{
+    font-size: 1.5rem;
+    width: 80%;
+    line-height: 2.5rem;
+    margin-top: 40px;
+
+}
+.contact-us > .contact-us-middle > .contact-us-bottom > .contact-us-text > a > ul{
+    margin-top: 40px;
+
+}
+.contact-us > .contact-us-middle > .contact-us-bottom > .contact-us-text > a > h2{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 2rem;
+
+}
+.contact-us > .contact-us-middle > .contact-us-bottom > .contact-us-image{
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+}
+.contact-us > .contact-us-middle > .contact-us-bottom > .contact-us-image > .contact-us-image-lego{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* END | ABOUT US SECTION */
+
 /* START | UNDER NAVBAR SECTION */
 .under-nav-bar-menu{
     width: 100%;
@@ -65,115 +245,77 @@ body{
     text-align: center;
     background-color: #00263B;
 }
-.under-nav-bar-menu > a{
+.under-nav-bar-menu > .under-nav-bar-blocks{
     text-decoration: none;
     color: white;
     margin-top: 20px;
     font-size: 1.25rem;
     display: inline-block;
-    width: 10%;
+    width: 12%;
     text-align: center;
+}
+.under-nav-bar-menu > .under-nav-bar-blocks > a{
+    text-decoration: none;
+    color: white;
+}
+
+.under-nav-bar-menu > .under-nav-bar-blocks > a:hover{
+    border-bottom: 4px solid whitesmoke;
+    border-radius: 0.1rem;
+    transition-duration: 100ms;
 }
 /* END | UNDER NAVBAR SECTION */
 
 
-/* START | LOGIN PAGE SECTION */
-.container {
-    background-color: #00E3F9;
-    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
-    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
-    width: 30vw;
-    height: 70vh;
-    border-radius: 1rem;
-    padding: 1rem;
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
+/* START | REGISTER PAGE SECTION */
+.register-middle-section-div {
+    width: 100%;
+    height: 102vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.register-middle-section-div > .register-forms-div{
+    width: 80%;
+    height: 102vh;
+    background-color: whitesmoke;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.form-control {
-    border-radius: 25px; /* Rounded corners */
-    width: 9vw; /* Percentage of the container width */
-    margin: 10px auto; /* Center the input fields */
-    height: 40px; /* Fixed height for uniformity */
-    background-color: #FDFFE5; /* Light background */
-    border: 2px solid #001F31; /* Solid border */
-    padding: 0 15px; /* Padding inside the input fields */
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
-    font-size: 16px; /* Readable font size */
-    color: #333; /* Text color */
-}
 
-.submit-button-form {
-    width: 9vw; /* Match input field width */
-    height: 40px; /* Match input field height */
-    background-color: #264653; /* Button background color */
-    color: white; /* Button text color */
-    border-radius: 25px; /* Rounded corners */
-    border: none; /* No border */
-    margin: 20px auto; /* Center the button and add some margin at the top */
-    cursor: pointer; /* Cursor to pointer to indicate it's clickable */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow to make it 'pop' */
-    transition: background-color 0.3s ease; /* Transition for when the button is interacted with */
 }
-
-.submit-button-form:hover {
-    background-color: #1D3557; /* Darken button on hover */
-}
-
-/* Additional styles for error messages */
-.error {
-    color: #d9534f; /* Bootstrap's default error color */
-    display: block; /* Make sure it takes up its own line */
-    font-size: 0.85em; /* Smaller font size for error messages */
-    margin-top: 5px; /* Margin on top of the error message */
-}
-.login-page-container{
-    width: 60%;
-    height: 60vh;
-    background-color: #FE3E4B;
-    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
-    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
-    border-radius: 1rem;
-    margin: 7% auto auto;
+.register-middle-section-div > .register-forms-div > .register-forms-header{
+    width: 100%;
+    height: 20vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
-.login-page-container > a{
-    font-size: 1.5rem;
-    color:white;
+.register-middle-section-div > .register-forms-div > .register-forms-header > h1{
+    color: #00263B;
+    font-size: 4rem;
+
 }
-.login-page-container > form{
-    font-size: 1.5rem;
-    color:white;
+.register-middle-section-div > .register-forms-div > .register-forms{
+    width: 100%;
+    height: 82vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ackground-color: #00E3F9;
+}
+.register-middle-section-div > .register-forms-div > .register-forms > form{
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    b
 }
 
-.login-page-container > form > .text-in-login{
-    background-color: #00E3F9;
-    margin: auto;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.login-page-container > form > .login-button-login{
-    background-color: #D70F35;
-    width: 40%;
-    height: 40%;
-    border-radius: 2rem;
-    margin: auto;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-/* END | LOGIN PAGE SECTION */
+/* END | REGISTER PAGE SECTION */
 
 /*START | ADDRESSES-LIST PAGE SECTION*/
 
@@ -189,6 +331,7 @@ body{
     color:black;
     background-color: whitesmoke;
 }
+
 .function-button{
     display: flex;
     background-color: #00E3F9;
@@ -211,13 +354,11 @@ body{
 footer{
     width: 100%;
     height: 20vh;
-    margin-top: 40%;
     background-color: #001F31;
 }
 .footer-div {
     width: 100%;
     height: auto;
-    margin-top: 40px;
     background-color: #001F31;
     display: flex;
     flex-direction: column; /* Arrange the divs vertically */
@@ -253,7 +394,6 @@ footer{
     width: 28%;
     background-color: #D70F35;
 }
-
 .footer-down-copyrights {
     width: 60%;
     height: auto;

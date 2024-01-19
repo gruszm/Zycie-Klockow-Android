@@ -25,10 +25,21 @@
         </div>
     </div>
     <div class="under-nav-bar-menu">
-        <a th:href="@{/addresses/}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Your addresses</a>
-        <a th:href="@{/orders/}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List of all orders</a>
-        <a th:href="@{/deliveryMethods/}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">List of all delivery methods</a>
-        <a th:href="@{/products/}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">List of products</a>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/addresses/}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Your addresses</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/orders/}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List of all orders</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/deliveryMethods/}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">List of all delivery methods</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/products/}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">List of products</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/about}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">About us</a>
+        </div>
     </div>
     <form th:action="@{/orders/orderSummary/}" method="POST">
         <input type="hidden" th:name="selectedDeliveryMethodId" th:value="${selectedDeliveryMethodId}">
@@ -60,27 +71,27 @@
                     <img th:src="@{/images/nav-icon.png}" alt="Nav Icon" class="nav-icon-footer" />
                 </div>
                 <div class="footer-middle-side">
-                    <h2>Dane kontaktowe</h2>
+                    <h2>Contact Details</h2>
                     <a>
-                        Zycieklockow.pl <br> Łódź, ul. Al. Politechniki 69 <br> Numer telefonu: +48 213 742 066 <br> adres email: zycieklockow@gmail.com
+                        Zycieklockow.pl <br> Łódź, ul. Al. Politechniki 69 <br> Phone Number: +48 213 742 066 <br> Email Address: zycieklockow@gmail.com
                     </a>
                 </div>
                 <div class="footer-right-side">
-                    <h2>O nas</h2>
+                    <h2>About Us</h2>
                     <a>
+                        Terms and Conditions
+                        <br>
+                        Policies
+                        <br>
+                        Contact
+                        <br>
                         RODO
-                        <br>
-                        Kontakt
-                        <br>
-                        Informacje
-                        <br>
-                        Sprzedaż
                         <br>
                     </a>
                 </div>
             </div>
             <div class="footer-down-copyrights">
-                <a>Zycieklockow.pl to Twój sklep z zestawami klocków LEGO i innych konstrukcyjnych przygód. Jesteśmy dumni z oferowania oryginalnych produktów LEGO, a LEGO, LEGO Minifigures, LEGO Star Wars i inne są zastrzeżonymi znakami towarowymi LEGO Group. ©2024 LEGO Group. Wszelkie prawa zastrzeżone | Sklep z klockami LEGO zycieklockow.pl | 2024</a>
+                <a>Zycieklockow.pl is your store for LEGO sets and other construction adventures. We take pride in offering authentic LEGO products, and LEGO, LEGO Minifigures, LEGO Star Wars, and others are trademarks of the LEGO Group. ©2024 the LEGO Group. All rights reserved | LEGO brick store zycieklockow.pl | 2024</a>
             </div>
         </div>
     </footer>

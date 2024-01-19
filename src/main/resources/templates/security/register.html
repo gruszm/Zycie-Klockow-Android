@@ -25,51 +25,63 @@
         </div>
     </div>
     <div class="under-nav-bar-menu">
-        <a th:href="@{/addresses/}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Your addresses</a>
-        <a th:href="@{/orders/}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List of all orders</a>
-        <a th:href="@{/deliveryMethods/}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">List of all delivery methods</a>
-        <a th:href="@{/products/}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">List of products</a>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/addresses/}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Your addresses</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/orders/}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List of all orders</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/deliveryMethods/}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">List of all delivery methods</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/products/}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">List of products</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/about}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">About us</a>
+        </div>
     </div>
-    <div class="container">
-        <form class="form-register" th:object="${user_dto}" th:action="@{/processRegistration}" method="POST">
-            Enter your first name:
-            <br>
-            <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name" />
-            <small class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" />
-            <br>
-            Enter your middle name:
-            <br>
-            <input type="text" class="form-control" th:field="*{middleName}" placeholder="Middle Name (optional)" />
-            <small class="error" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" />
-            <br>
-            Enter your last name:
-            <br>
-            <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name" />
-            <small class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" />
-            <br>
-            Enter your email:
-            <br>
-            <input type="text" class="form-control" th:field="*{email}" placeholder="Email" />
-            <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
-            <br>
-            Enter your password:
-            <br>
-            <input type="password" class="form-control" th:field="*{password}" placeholder="Password" />
-            <small class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
-            <br>
-            Enter your password again:
-            <br>
-            <input type="password" class="form-control" th:field="*{repeatPassword}" placeholder="Repeat Password" />
-            <small class="error" th:if="${#fields.hasErrors('repeatPassword')}" th:errors="*{repeatPassword}" />
-            <br>
-            <button type="submit" class="submit-button-form">Submit</button>
-        </form>
-    </div>
-    <div class="social-media-div">
-
-    </div>
-    <div class="recommendation-items-div">
-
+    <div class="register-middle-section-div">
+        <div class="register-forms-div">
+            <div class="register-forms-header">
+                <h1>Build Your Account, Brick by Brick!</h1>
+            </div>
+            <div class="register-forms">
+                <form th:object="${user_dto}" th:action="@{/processRegistration}" method="POST">
+                    Enter your first name:
+                    <br>
+                    <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name" /> <br>
+                    <small class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" />
+                    <br>
+                    Enter your middle name:
+                    <br>
+                    <input type="text" class="form-control" th:field="*{middleName}" placeholder="Middle Name (optional)" /> <br>
+                    <small class="error" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" />
+                    <br>
+                    Enter your last name:
+                    <br>
+                    <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name" /> <br>
+                    <small class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" />
+                    <br>
+                    Enter your email:
+                    <br>
+                    <input type="text" class="form-control" th:field="*{email}" placeholder="Email" /> <br>
+                    <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
+                    <br>
+                    Enter your password:
+                    <br>
+                    <input type="password" class="form-control" th:field="*{password}" placeholder="Password" /> <br>
+                    <small class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
+                    <br>
+                    Enter your password again:
+                    <br>
+                    <input type="password" class="form-control" th:field="*{repeatPassword}" placeholder="Repeat Password" /> <br>
+                    <small class="error" th:if="${#fields.hasErrors('repeatPassword')}" th:errors="*{repeatPassword}" />
+                    <br>
+                    <button type="submit" class="submit-button-form">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
     <footer>
         <div class=footer-div>
@@ -78,27 +90,27 @@
                     <img th:src="@{/images/nav-icon.png}" alt="Nav Icon" class="nav-icon-footer" />
                 </div>
                 <div class="footer-middle-side">
-                    <h2>Dane kontaktowe</h2>
+                    <h2>Contact Details</h2>
                     <a>
-                        Zycieklockow.pl <br> Łódź, ul. Al. Politechniki 69 <br> Numer telefonu: +48 213 742 066 <br> adres email: zycieklockow@gmail.com
+                        Zycieklockow.pl <br> Łódź, ul. Al. Politechniki 69 <br> Phone Number: +48 213 742 066 <br> Email Address: zycieklockow@gmail.com
                     </a>
                 </div>
                 <div class="footer-right-side">
-                    <h2>O nas</h2>
+                    <h2>About Us</h2>
                     <a>
+                        Terms and Conditions
+                        <br>
+                        Policies
+                        <br>
+                        Contact
+                        <br>
                         RODO
-                        <br>
-                        Kontakt
-                        <br>
-                        Informacje
-                        <br>
-                        Sprzedaż
                         <br>
                     </a>
                 </div>
             </div>
             <div class="footer-down-copyrights">
-                <a>Zycieklockow.pl to Twój sklep z zestawami klocków LEGO i innych konstrukcyjnych przygód. Jesteśmy dumni z oferowania oryginalnych produktów LEGO, a LEGO, LEGO Minifigures, LEGO Star Wars i inne są zastrzeżonymi znakami towarowymi LEGO Group. ©2024 LEGO Group. Wszelkie prawa zastrzeżone | Sklep z klockami LEGO zycieklockow.pl | 2024</a>
+                <a>Zycieklockow.pl is your store for LEGO sets and other construction adventures. We take pride in offering authentic LEGO products, and LEGO, LEGO Minifigures, LEGO Star Wars, and others are trademarks of the LEGO Group. ©2024 the LEGO Group. All rights reserved | LEGO brick store zycieklockow.pl | 2024</a>
             </div>
         </div>
     </footer>

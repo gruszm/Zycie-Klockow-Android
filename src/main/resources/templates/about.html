@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>About us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/warning-buttons.css}" />
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+</head>
+<body>
+    <div th:if="${param.logout}" class="alert" role="alert">
+        <a>Wylogowano poprawnie</a>
+    </div>
+
+    <div th:if="${param.registered}" class="alert" role="alert">Zarejestrowano poprawnie.</div>
+
+    <div class="nav-bar">
+        <a href="#" th:href="@{/}" class="nav-icon-1" tabindex="-1" role="button" aria-disabled="true">
+            <img th:src="@{/images/nav-icon.png}" alt="Nav Icon" class="nav-icon" />
+        </a>
+
+        <div class="right-side-nav-bar">
+            <a href="#" th:href="@{/login}" sec:authorize="isAnonymous()" class="login-button">Login</a>
+            <a href="#" th:href="@{/register}" sec:authorize="isAnonymous()" class="register-button">Register</a>
+            <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()" class="logout-button">Logout</a>
+            <a th:href="@{/cart/}" class="cart-icon-2" tabindex="-1" role="button" aria-disabled="true">
+                <img th:src="@{/images/cart-icon.png}" alt="Cart" class="cart-icon" />
+            </a>
+        </div>
+    </div>
+
+    <div class="under-nav-bar-menu">
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/addresses/}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Your addresses</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/orders/}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List of all orders</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/deliveryMethods/}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">List of all delivery methods</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/products/}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">List of products</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/about}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">About us</a>
+        </div>
+    </div>
+
+    <div class="About-us">
+        <div class="about-us-text-welcome">
+            <div class="welcome-header">
+                <h1>Welcome to Our Lego World!</h1>
+            </div>
+
+            <div class="welcome-text">
+                <a>We're thrilled to have you here at <b style="color:#FF3F4C">Zycieklockow.pl</b> your ultimate destination for all things Lego. <br>Whether you're a seasoned builder or just starting your Lego adventure, we have something special for you.<br>
+
+                    Explore our wide range of Lego sets, from classic favorites to the latest releases. Build your dream creations, spark your imagination, and experience the joy of Lego like never before.<br><br>
+
+                    <b style="color:#FF3F4C; font-size: 2rem;">Why choose us?</b><br><br>
+
+                    <ul>
+                        <li><b>Quality Assurance:</b> We offer only genuine Lego products, ensuring the highest quality and endless hours of fun.</li>
+
+                        <li><b>Variety:</b> Discover sets for all ages and interests, from Duplo for the little ones to intricate Creator Expert sets for the enthusiasts.</li>
+
+                        <li><b>ast and Secure Shipping:</b> We'll deliver your Lego sets safely to your doorstep, so you can start building in no time.</li>
+
+                        <li><b>Customer Support:</b> Have questions or need assistance? Our friendly team is here to help you.</li>
+                    </ul>
+                    <br>
+                    Thank you for choosing <b style="color:#FF3F4C">Zycieklockow.pl</b> as your Lego source. <br>Start building your Lego world today!<br><br>
+
+                    <b style="font-size: 2rem">Happy building!</b></a>
+
+            </div>
+            <div class="welcome-image">
+                <img th:src="@{/images/welcome_lego.png}" alt="welcome-lego" class="welcome-lego-image" />
+            </div>
+        </div>
+    </div>
+
+    <div class="Rodo">
+        <div class="rodo-left-text">
+            <div class="rodo-left-text-header">
+                <h1> Privacy and Personal Data Protection Policy</h1>
+            </div>
+            <div class="rodo-left-text-paragraph">
+                <a>
+                    We value your privacy and handle your data carefully. We collect and process your data for order processing, customer support, and, with your consent, marketing. Types of data we collect include your name, email, phone, delivery address, and order details. Data processing is based on contractual necessity, legal requirements, or your consent. We retain data as required by law. You have rights to access, correct, delete, restrict, and port your data. We prioritize data security. For questions or concerns, contact us at <b>Zycieklockow.pl</b>. Our Privacy Policy may undergo updates. <br><br>Last Updated: 01.01.2077.
+                <br><br><br>
+                    <a class="learn-more">Learn more</a>
+                </a>
+
+            </div>
+
+        </div>
+        <div class="rodo-right-image">
+            <div class="rodo-lawyer-image">
+                <img th:src="@{/images/rodo_lawyer.png}" alt="lawyer-rodo" class="lawyer-rodo" />
+            </div>
+        </div>
+    </div>
+    <div class="contact-us">
+        <div class="contact-us-middle">
+            <div class="contact-us-header">
+                <h1>How to Reach Us</h1>
+            </div>
+            <div class="contact-us-bottom">
+                <div class="contact-us-text">
+
+                    <a>
+                        <h2>Need assistance or have questions <br>about our Lego products? <br>We're here to help!</h2>
+                        <ul>
+                            <li><b>Email:</b> zycieklockow@gmail.com</li>
+                            <li><b>Phone:</b> +48 213 742 066</li>
+                        </ul><br>
+                        Our friendly and knowledgeable customer support team is ready to assist you with any inquiries or concerns you may have. Feel free to reach out to us via email or give us a call, and we'll ensure your Lego shopping experience is a breeze.
+                    </a>
+                </div>
+                <div class="contact-us-image">
+                    <div class="contact-us-image-lego">
+                        <img th:src="@{/images/contact_us.png}" alt="lawyer-rodo" class="lawyer-rodo" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class=footer-div>
+            <div class="footer-content">
+                <div class="footer-logo-left-side">
+                    <img th:src="@{/images/nav-icon.png}" alt="Nav Icon" class="nav-icon-footer" />
+                </div>
+                <div class="footer-middle-side">
+                    <h2>Contact Details</h2>
+                    <a>
+                        Zycieklockow.pl <br> Łódź, ul. Al. Politechniki 69 <br> Phone Number: +48 213 742 066 <br> Email Address: zycieklockow@gmail.com
+                    </a>
+                </div>
+                <div class="footer-right-side">
+                    <h2>About Us</h2>
+                    <a>
+                        Terms and Conditions
+                        <br>
+                        Policies
+                        <br>
+                        Contact
+                        <br>
+                        RODO
+                        <br>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-down-copyrights">
+                <a>Zycieklockow.pl is your store for LEGO sets and other construction adventures. We take pride in offering authentic LEGO products, and LEGO, LEGO Minifigures, LEGO Star Wars, and others are trademarks of the LEGO Group. ©2024 the LEGO Group. All rights reserved | LEGO brick store zycieklockow.pl | 2024</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

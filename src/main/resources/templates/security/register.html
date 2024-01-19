@@ -48,37 +48,44 @@
             </div>
             <div class="register-forms">
                 <form th:object="${user_dto}" th:action="@{/processRegistration}" method="POST">
-                    Enter your first name:
-                    <br>
-                    <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name" /> <br>
-                    <small class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" />
-                    <br>
-                    Enter your middle name:
-                    <br>
-                    <input type="text" class="form-control" th:field="*{middleName}" placeholder="Middle Name (optional)" /> <br>
-                    <small class="error" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" />
-                    <br>
-                    Enter your last name:
-                    <br>
-                    <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name" /> <br>
-                    <small class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" />
-                    <br>
-                    Enter your email:
-                    <br>
-                    <input type="text" class="form-control" th:field="*{email}" placeholder="Email" /> <br>
-                    <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
-                    <br>
-                    Enter your password:
-                    <br>
-                    <input type="password" class="form-control" th:field="*{password}" placeholder="Password" /> <br>
-                    <small class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
-                    <br>
-                    Enter your password again:
-                    <br>
-                    <input type="password" class="form-control" th:field="*{repeatPassword}" placeholder="Repeat Password" /> <br>
-                    <small class="error" th:if="${#fields.hasErrors('repeatPassword')}" th:errors="*{repeatPassword}" />
-                    <br>
-                    <button type="submit" class="submit-button-form">Submit</button>
+                    <div class="form-group">
+                        <label>Enter your first name:</label>
+                            <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name" />
+                        <small class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Enter your middle name:</label>
+                            <input type="text" class="form-control" th:field="*{middleName}" placeholder="Middle Name (optional)" />
+                        </label>
+                        <small class="error" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label> Enter your last name:</label>
+                            <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name" />
+                        <small class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Enter your email:</label>
+                            <input type="text" class="form-control" th:field="*{email}" placeholder="Email" />
+                        <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Enter your password:</label>
+                            <input type="password" class="form-control" th:field="*{password}" placeholder="Password" />
+                        <small class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Enter your password again:</label>
+                            <input type="password" class="form-control" th:field="*{repeatPassword}" placeholder="Repeat Password" />
+                        <small class="error" th:if="${#fields.hasErrors('repeatPassword')}" th:errors="*{repeatPassword}" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="submit-button-form">Build</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -270,7 +270,7 @@ body{
 /* START | REGISTER PAGE SECTION */
 .register-middle-section-div {
     width: 100%;
-    height: 102vh;
+    height: 110vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -278,7 +278,7 @@ body{
 }
 .register-middle-section-div > .register-forms-div{
     width: 80%;
-    height: 102vh;
+    height: 110vh;
     background-color: whitesmoke;
     display: flex;
     flex-direction: column;
@@ -303,17 +303,66 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    ackground-color: #00E3F9;
+}
+.register-middle-section-div > .register-forms-div > .register-forms > .building-lego-image{
+    display: flex;
+    margin-top: 550px;
+    width: 10%;
+    height: 10%;
 }
 .register-middle-section-div > .register-forms-div > .register-forms > form{
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    b
+    width: 60%;
+    height: 82vh;
 }
-
+.register-middle-section-div > .register-forms-div > .register-forms > form > .form-group{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:  #00263B;
+    flex-direction: column;
+    height: 20%;
+}
+.register-middle-section-div > .register-forms-div > .register-forms > form > .form-group > .error{
+    color: red;
+    margin-top: 5px;
+}
+.register-middle-section-div > .register-forms-div > .register-forms > form > .form-group > .form-control{
+    display: flex;
+    width: 45%;
+    height: 50%;
+    font-size: 1.2rem;
+    text-align: center;
+    border: 3px solid  #00263B;
+    font-style: italic;
+    border-radius: 1rem;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+}
+.register-middle-section-div > .register-forms-div > .register-forms > form > .form-group > .submit-button-form{
+    width: 50%;
+    height: 50%;
+    background-color: #FF3F4C;
+    border-radius: 1rem;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    font-weight: bold;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    transition: background-color 0.3s ease, transform 0.5s ease; /* Ustawienie efektu przejścia */
+}
+.register-middle-section-div > .register-forms-div > .register-forms > form > .form-group > .submit-button-form:hover{
+    background-color: #FFD101;
+    color: #00263B;
+    transform: translate(3px, 3px);
+}
 
 /* END | REGISTER PAGE SECTION */
 

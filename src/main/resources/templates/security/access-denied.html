@@ -42,8 +42,22 @@
             <a th:href="@{/about}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">About us</a>
         </div>
     </div>
-    <div class="alert" role="alert">
-        ACCESS DENIED
+    <div class="no-access-div">
+        <div class="no-access-middle-section">
+            <div class="no-access-header">
+                <h1>Ups...</h1>
+                <br>
+                <h2>This page is restricted to authorized users only. </h2>
+                <h2>Please contact the administrator for access.</h2>
+            </div>
+            <div class="no-access-bottom">
+                <div class="no-access-image">
+                    <div class="no-access-image-lego">
+                        <img th:src="@{/images/access_denied_lego_figure.png}" class="no-access-lego"  alt="no-access-lego-image"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <footer>
         <div class=footer-div>

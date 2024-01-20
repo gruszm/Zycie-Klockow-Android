@@ -336,7 +336,7 @@ body{
     display: flex;
     width: 45%;
     height: 50%;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: center;
     border: 3px solid  #00263B;
     font-style: italic;
@@ -365,6 +365,145 @@ body{
 }
 
 /* END | REGISTER PAGE SECTION */
+
+/* START | ACCESS DENIED SECTION */
+
+.no-access-div{
+    width: 100%;
+    height: 80vh;
+}
+.no-access-div > .no-access-middle-section{
+    width: 60%;
+    height: 80vh;
+    margin: auto;
+    background-color: whitesmoke;
+}
+.no-access-div > .no-access-middle-section > .no-access-header{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.no-access-div > .no-access-middle-section > .no-access-bottom{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+}
+.no-access-div > .no-access-middle-section > .no-access-bottom > .no-access-image{
+    height: 80%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+.no-access-div > .no-access-middle-section > .no-access-bottom > .no-access-image > .no-access-image-lego{
+    height: 40vh;
+    display: flex;
+}
+.no-access-div > .no-access-middle-section > .no-access-header > h1{
+    font-size: 4rem;
+}
+
+/* END | ACCESS DENIED SECTION */
+
+/*START | LOGIN PAGE SECTION */
+
+.middle-section-page{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.middle-section-page > .login-page-container{
+    width: 80%;
+    height: 80vh;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+}
+.middle-section-page > .login-page-container > .login-page-header{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 4rem;
+}
+.middle-section-page > .login-page-container > .login-page-header > h1 {
+    color: #00263B;
+    font-size: 4rem;
+}
+.middle-section-page > .login-page-container > .login-page-header > h2{
+    color: #00263B;
+    font-size: 2rem;
+    margin-top: 1.6rem;
+}
+.middle-section-page > .login-page-container > form{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    width: 60%;
+    height: 82vh;
+}
+.middle-section-page > .login-page-container > form > .error{
+    color: red;
+    margin-top: 5px;
+}
+
+.middle-section-page > .login-page-container > form > .form-group{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    color:  #00263B;
+    margin-top: 3rem;
+    flex-direction: column;
+    height: 20%;
+}
+.middle-section-page > .login-page-container > form > .form-group > .form-control {
+    display: flex;
+    width: 45%;
+    height: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 3px solid #00263B;
+    font-style: italic;
+    border-radius: 1rem;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+}
+.middle-section-page > .login-page-container > form > .form-group > .login-button-login{
+    width: 50%;
+    height: 50%;
+    background-color: #FF3F4C;
+    border-radius: 1rem;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    font-weight: bold;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    transition: background-color 0.3s ease, transform 0.5s ease; /* Ustawienie efektu przejścia */
+}
+.middle-section-page > .login-page-container > form > .form-group > .login-button-login:hover{
+    background-color: #FFD101;
+    color: #00263B;
+    transform: translate(3px, 3px);
+}
+
+/*END | LOGIN PAGE SECTION */
 
 /*START | ADDRESSES-LIST PAGE SECTION*/
 

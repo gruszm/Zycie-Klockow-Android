@@ -505,6 +505,146 @@ body{
 
 /*END | LOGIN PAGE SECTION */
 
+/*START | DELIVERY METHODS PAGE SECTION */
+
+.list-delivery-div{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-delivery-div > .list-delivery-middle-section{
+    width: 80%;
+    height: 100vh;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-header{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-header > h1 {
+    color: #00263B;
+    font-size: 4rem;
+
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-table-div{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00263B;
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-table-div > table{
+    font-size: 2rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #D70F35;
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-table-div > table > thead{
+    text-align: center;
+    font-size: 3rem;
+    background-color: #00263B;
+    color: whitesmoke;
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-table-div > table > tbody{
+    text-align: center;
+    color: whitesmoke;
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-button-div{
+    width: 20%;
+    height: 10vh;
+    display: flex;
+    margin-top: 2%;
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-button-div > a{
+    width: 90%;
+    height: 70%;
+    background-color: #FF3F4C;
+    border-radius: 1rem;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    text-decoration: none;
+    color: #00263B;
+    text-align: center;
+    font-weight: bold;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    transition: background-color 0.3s ease, transform 0.5s ease; /* Ustawienie efektu przejścia */
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-button-div > a:hover{
+    background-color: #FFD101;
+    color: #00263B;
+    transform: translate(3px, 3px);
+}
+
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-form-add-new{
+    width: 50%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-form-add-new > form{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-form-add-new > form > .form-group{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    color:  #00263B;
+    margin-top: 3rem;
+    flex-direction: column;
+    height: 20%;
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-form-add-new > form > .form-group > .form-control{
+    display: flex;
+    width: 45%;
+    height: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 3px solid  #00263B;
+    font-style: italic;
+    border-radius: 1rem;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-form-add-new > form > .form-group > .submit-delivery-button{
+    width: 70%;
+    height: 90%;
+    background-color: #FF3F4C;
+    border-radius: 1rem;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    font-weight: bold;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    transition: background-color 0.3s ease, transform 0.5s ease; /* Ustawienie efektu przejścia */
+}
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-form-add-new > form > .form-group > .submit-delivery-button:hover{
+    background-color: #FFD101;
+    color: #00263B;
+    transform: translate(3px, 3px);
+}
+
+/*END | DELIVERY METHODS PAGE SECTION */
+
 /*START | ADDRESSES-LIST PAGE SECTION*/
 
 .list-adressed-middle-section{

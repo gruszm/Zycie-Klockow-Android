@@ -41,8 +41,11 @@
             <a th:href="@{/about}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">About us</a>
         </div>
     </div>
-    <div th:if="${orderSubmitted}" class="alert alert-success mt-3" role="alert">
-        Zamówienie na kwotę <span th:text="${orderSubmitted}"/> zostało złożone pomyślnie.
+    <div th:if="${orderSubmitted}" class="alert" role="alert">
+        <div class="left-side-text-alert">
+            Successfully made order on price:<span th:text="${orderSubmitted}"></span>zł
+        </div>
+        <a href="#" class="closeLink">X</a>
     </div>
 
     <div class="list-orders-div">
@@ -108,5 +111,6 @@
             </div>
         </div>
     </footer>
+    <script th:src="@{/js/AlertButtonClose.js}"></script>
 </body>
 </html>

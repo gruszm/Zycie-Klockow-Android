@@ -42,55 +42,68 @@
     </div>
 
 
-    <div th:if="${productDeleted}" class="alert alert-success mt-3" role="alert">
-        Produkt o ID = <span th:text="${productDeleted}" /> został usunięty.
+    <div th:if="${productDeleted}" class="alert" role="alert">
+        <div class="left-side-text-alert">
+            Product ID = <span th:text="${productDeleted}" /> has been deleted.
+        </div>
+        <a href="#" class="closeLink">X</a>
     </div>
 
-    <div th:if="${addedProductName}" class="alert alert-success mt-3" role="alert">
-        Produkt o nazwie "<span th:text="${addedProductName}" />" z ceną <span th:text="${addedProductPrice}" /> zł za sztukę w ilości <span th:text="${addedProductQuantity}"/> został dodany pomyślnie.
+
+    <div th:if="${addedProductName}" class="alert" role="alert">
+        <div class="left-side-text-alert">
+            Product "<span th:text="${addedProductName}" />" with price <span th:text="${addedProductPrice}" /> zł for each in amount <span th:text="${addedProductQuantity}"/> has been added successfully .
+        </div>
+        <a href="#" class="closeLink">X</a>
     </div>
 
-    <hr>
+    <div class="list-of-products-div">
 
-    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/products/addForm/}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">Add Product</a>
-
-    <div class="list-of-products">
-
-        <h1>List of products:</h1>
-
-        <table class="table-of-products">
-            <thead class="table-dark">
-                <tr>
-                    <th sec:authorize="hasRole('ROLE_ADMIN')">Id</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>In Stock</th>
-                    <th>Category</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="product : ${products}">
-                    <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${product.id}" />
-                    <td th:text="${product.name}" />
-                    <td th:text="${product.price}" />
-                    <td th:text="${product.description}" />
-                    <td th:text="${product.quantity}" />
-                    <td th:text="${product.category.name}" />
-                    <td>
-                        <form th:action="@{/cart/addCartElement/}" method="POST">
-                            <input type="hidden" name="productIdToAdd" th:value="${product.id}" />
-                            <button type="submit" class="btn btn-primary">Add to Cart</button>
-                        </form>
-                        <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{/products/delete/}" method="POST">
-                            <input type="hidden" name="productIdToDelete" th:value="${product.id}" />
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="list-of-products-middle-section">
+            <div class="list-of-products-header">
+                <h1>List of products:</h1>
+            </div>
+            <div class="list-of-products-table-div">
+                <table class="table-of-products">
+                    <thead class="table-dark">
+                        <tr>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')">Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>In Stock</th>
+                            <th>Category</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="product : ${products}">
+                            <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${product.id}" />
+                            <td th:text="${product.name}" />
+                            <td th:text="${product.price}" />
+                            <td th:text="${product.description}" />
+                            <td th:text="${product.quantity}" />
+                            <td th:text="${product.category.name}" />
+                            <td>
+                                <div class="buttons-add-minus-div">
+                                    <form th:action="@{/cart/addCartElement/}" method="POST">
+                                        <input type="hidden" name="productIdToAdd" th:value="${product.id}" />
+                                        <button type="submit" class="button-plus">+</button>
+                                    </form>
+                                    <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{/products/delete/}" method="POST">
+                                        <input type="hidden" name="productIdToDelete" th:value="${product.id}" />
+                                        <button type="submit" class="button-minus">-</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="list-orders-button">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/products/addForm/}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">Add Product</a>
+            </div>
+        </div>
     </div>
     <footer>
         <div class=footer-div>
@@ -123,5 +136,6 @@
             </div>
         </div>
     </footer>
+    <script th:src="@{/js/AlertButtonClose.js}"></script>
 </body>
 </html>

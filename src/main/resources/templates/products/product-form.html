@@ -10,28 +10,79 @@
     <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
 </head>
 <body>
-    <a href="#" th:href="@{/}" class="btn btn-primary mt-3" tabindex="-1" role="button" aria-disabled="true">Home</a>
-    <a href="#" th:href="@{/products/}" class="btn btn-success mt-3" tabindex="-1" role="button" aria-disabled="true">Back</a>
-    <hr>
-    <h1>Add a new product:</h1>
-    <form th:action="@{/products/processProductForm/}" th:object="${product}" method="POST">
-        <input type="text" class="mb-2" th:field="*{name}" placeholder="Product Name"/>
-        <br>
-        <input type="text" class="mb-2" th:field="*{price}" placeholder="Price"/>
-        <br>
-        <input type="number" class="mb-2" th:field="*{quantity}" placeholder="Quantity"/>
-        <br>
-        <input type="text" class="mb-2" th:field="*{description}" placeholder="Description"/>
-        <br>
-        <select class="mb-2" name="categoryId">
-            <option th:each="category : ${categories}"
-                    th:value="${category.id}"
-                    th:text="${category.name}">
-            </option>
-        </select>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="nav-bar">
+        <a href="#" th:href="@{/}" class="nav-icon-1" tabindex="-1" role="button" aria-disabled="true">
+            <img th:src="@{/images/nav-icon.png}" alt="Nav Icon" class="nav-icon" />
+        </a>
+
+        <div class="right-side-nav-bar">
+            <a href="#" th:href="@{/login}" sec:authorize="isAnonymous()" class="login-button">Login</a>
+            <a href="#" th:href="@{/register}" sec:authorize="isAnonymous()" class="register-button">Register</a>
+            <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()" class="logout-button">Logout</a>
+            <a th:href="@{/cart/}" class="cart-icon-2" tabindex="-1" role="button" aria-disabled="true">
+                <img th:src="@{/images/cart-icon.png}" alt="Cart" class="cart-icon" />
+            </a>
+        </div>
+    </div>
+    <div class="under-nav-bar-menu">
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/addresses/}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Your addresses</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/orders/}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List of all orders</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/deliveryMethods/}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">List of all delivery methods</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/products/}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">List of products</a>
+        </div>
+        <div class="under-nav-bar-blocks">
+            <a th:href="@{/about}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">About us</a>
+        </div>
+    </div>
+
+    <div class="product-form-div">
+        <div class="product-form-middle-section">
+            <div class="product-form-header">
+                <h1>Add a new product</h1>
+            </div>
+            <div class="product-form-div-form">
+                <form th:action="@{/products/processProductForm/}" th:object="${product}" method="POST">
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" class="form-control" th:field="*{name}" placeholder="Product Name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Price</label>
+                        <input type="text" class="form-control" th:field="*{price}" placeholder="Price"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Quantity</label>
+                        <input type="number" class="form-control" th:field="*{quantity}" placeholder="Quantity"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Description</label>
+                        <input type="text" class="form-control" th:field="*{description}" placeholder="Description"/>
+                    </div>
+                    <div class="form-group">
+                    <label>Product Category</label>
+                        <select class="form-control" name="categoryId">
+                            <option th:each="category : ${categories}"
+                                    th:value="${category.id}"
+                                    th:text="${category.name}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="submit-button-form">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
     <footer>
         <div class=footer-div>
             <div class="footer-content">

@@ -42,17 +42,30 @@
             <a th:href="@{/about}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">About us</a>
         </div>
     </div>
-    <form th:action="@{/orders/selectAddress/}" method="POST">
-        <div th:each="deliveryMethod : ${deliveryMethods}">
-            <input type="radio" th:name="selectedDeliveryMethodId" th:value="${deliveryMethod.id}">
-            <span th:text="${deliveryMethod.name}"/>
-            <span th:text="${deliveryMethod.price}"/> zł
+
+    <div class="delivery-method-div">
+        <div class="delivery-method-middle-section">
+            <div class="delivery-method-header">
+                <h1>Select your delivery method</h1>
+            </div>
+            <div class="delivery-method-form-div">
+                <form th:action="@{/orders/selectAddress/}" method="POST">
+                    <div class="form-group-radio-button">
+                        <div class="delivery-method-type" th:each="deliveryMethod : ${deliveryMethods}">
+                            <div class="text-for-radio-button">
+                                <input type="radio" th:name="selectedDeliveryMethodId" th:value="${deliveryMethod.id}">
+                                <span th:text="${deliveryMethod.name}"></span>
+                                <span th:text="${deliveryMethod.price}"></span> zł
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="submit-button-form" value="Next Step: Select Address">
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <br>
-
-        <input type="submit" class="btn btn-primary" value="Select Address">
-    </form>
+    </div>
     <footer>
         <div class=footer-div>
             <div class="footer-content">

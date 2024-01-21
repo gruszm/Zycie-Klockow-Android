@@ -41,79 +41,93 @@
             <a th:href="@{/about}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">About us</a>
         </div>
     </div>
-    <div class="middle-section">
-        <div class="cart-items-list">
-            <h1>My cart</h1>
-            <table class="table-products">
-                <thead class="table-dark">
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Total Value</th>
-                <th style="text-align: right;">Action</th>
-                </thead>
-                <tbody>
-                <tr th:each="pwq : ${productWithQuantityList}" class="table-row">
-                    <td th:text="${pwq.product.name}" />
-                    <td th:text="${pwq.quantity}" />
-                    <td th:text="${pwq.product.price}" />
-                    <td th:text="${pwq.getTotalValue()}" />
-                    <td style="text-align: right;">
-                        <form th:action="@{/cart/deleteCartElement/}" method="POST">
-                            <input type="hidden" name="cartElementId" th:value="${pwq.id}" />
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="cart-payment-method-and-total">
-            <h1>Order Summary</h1>
-            <div class="cart-total">
-                <strong>In Total:</strong> <span th:text="${totalCartValue}"></span>
+    <div class="cart-div">
+        <div class="cart-middle-section">
+            <div class="cart-left-side">
+                <div class="cart-left-side-container">
+                    <div class="cart-left-side-header">
+                        <h1>My cart</h1>
+                    </div>
+                    <div class="cart-left-side-table-div">
+                        <table class="table-products">
+                            <thead class="table-dark">
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Value</th>
+                            <th>Action</th>
+                            </thead>
+                            <tbody>
+                            <tr th:each="pwq : ${productWithQuantityList}" class="table-row">
+                                <td th:text="${pwq.product.name}" />
+                                <td th:text="${pwq.quantity}" />
+                                <td th:text="${pwq.product.price}" />
+                                <td th:text="${pwq.getTotalValue()}" />
+                                <td>
+                                    <div class="buttons-add-minus-div">
+                                        <form th:action="@{/cart/deleteCartElement/}" method="POST">
+                                            <input type="hidden" name="cartElementId" th:value="${pwq.id}" />
+                                            <button type="submit" class="btn btn-danger">-</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="buy-button">
-                <a th:href="@{/orders/selectDeliveryMethod/}" class="btn btn-success">Proceed</a>
+            <div class="cart-right-side">
+                <div class="cart-right-side-container">
+                    <div class="cart-right-side-header">
+                        <h1>Order Summary</h1>
+                    </div>
+                    <div class="cart-total">
+                        <div class="cart-total-left-side">
+                            <a>Total order value:</a>
+                        </div>
+                        <div class="cart-total-right-side">
+                            <span th:text="${totalCartValue} + ' zł'"></span>
+                        </div>
+                    </div>
+                    <div class="buy-button-div">
+                            <a th:href="@{/orders/selectDeliveryMethod/}" class="buy-button-a">Proceed</a>
+                    </div>
+                </div>
             </div>
-            </tbody>
-        </table>
-
-        <div class="cart-total">
-            <strong>In Total:</strong> <span th:text="${totalCartValue} + ' zł'"></span>
         </div>
-
     </div>
-        <footer>
-            <div class=footer-div>
-                <div class="footer-content">
-                    <div class="footer-logo-left-side">
-                        <img th:src="@{/images/nav-icon.png}" alt="Nav Icon" class="nav-icon-footer" />
-                    </div>
-                    <div class="footer-middle-side">
-                        <h2>Contact Details</h2>
-                        <a>
-                            Zycieklockow.pl <br> Łódź, ul. Al. Politechniki 69 <br> Phone Number: +48 213 742 066 <br> Email Address: zycieklockow@gmail.com
-                        </a>
-                    </div>
-                    <div class="footer-right-side">
-                        <h2>About Us</h2>
-                        <a>
-                            Terms and Conditions
-                            <br>
-                            Policies
-                            <br>
-                            Contact
-                            <br>
-                            RODO
-                            <br>
-                        </a>
-                    </div>
+
+    <footer>
+        <div class=footer-div>
+            <div class="footer-content">
+                <div class="footer-logo-left-side">
+                    <img th:src="@{/images/nav-icon.png}" alt="Nav Icon" class="nav-icon-footer" />
                 </div>
-                <div class="footer-down-copyrights">
-                    <a>Zycieklockow.pl is your store for LEGO sets and other construction adventures. We take pride in offering authentic LEGO products, and LEGO, LEGO Minifigures, LEGO Star Wars, and others are trademarks of the LEGO Group. ©2024 the LEGO Group. All rights reserved | LEGO brick store zycieklockow.pl | 2024</a>
+                <div class="footer-middle-side">
+                    <h2>Contact Details</h2>
+                    <a>
+                        Zycieklockow.pl <br> Łódź, ul. Al. Politechniki 69 <br> Phone Number: +48 213 742 066 <br> Email Address: zycieklockow@gmail.com
+                    </a>
+                </div>
+                <div class="footer-right-side">
+                    <h2>About Us</h2>
+                    <a>
+                        Terms and Conditions
+                        <br>
+                        Policies
+                        <br>
+                        Contact
+                        <br>
+                        RODO
+                        <br>
+                    </a>
                 </div>
             </div>
-        </footer>
+            <div class="footer-down-copyrights">
+                <a>Zycieklockow.pl is your store for LEGO sets and other construction adventures. We take pride in offering authentic LEGO products, and LEGO, LEGO Minifigures, LEGO Star Wars, and others are trademarks of the LEGO Group. ©2024 the LEGO Group. All rights reserved | LEGO brick store zycieklockow.pl | 2024</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

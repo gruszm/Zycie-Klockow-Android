@@ -560,6 +560,9 @@ body{
     text-align: center;
     color: whitesmoke;
 }
+.list-delivery-div > .list-delivery-middle-section > .list-delivery-table-div > table > tbody >  tr > td{
+    padding: 5px;
+}
 .list-delivery-div > .list-delivery-middle-section > .list-delivery-button-div{
     width: 20%;
     height: 10vh;
@@ -645,36 +648,238 @@ body{
 
 /*END | DELIVERY METHODS PAGE SECTION */
 
+/*START | LIST ORDERS PAGE SECTION*/
+
+.list-orders-div{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-orders-div > .list-orders-middle-section{
+    width: 80%;
+    height: 100vh;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.list-orders-div > .list-orders-middle-section > .list-orders-header{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.list-orders-div > .list-orders-middle-section > .list-orders-header > h1 {
+    color: #00263B;
+    font-size: 4rem;
+}
+.list-orders-div > .list-orders-middle-section > .list-orders-table-div{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00263B;
+}
+.list-orders-div > .list-orders-middle-section > .list-orders-table-div > table{
+    font-size: 1.5rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #D70F35;
+}
+.list-orders-div > .list-orders-middle-section > .list-orders-table-div > table > thead{
+    text-align: center;
+    font-size: 2rem;
+    background-color: #00263B;
+    color: whitesmoke;
+}
+.list-orders-div > .list-orders-middle-section > .list-orders-table-div > table > tbody{
+    text-align: center;
+    color: whitesmoke;
+}
+.list-orders-div > .list-orders-middle-section > .list-orders-table-div > table > tbody >  tr > td{
+    padding: 10px;
+}
+.list-orders-div > .list-orders-middle-section > .list-orders-div-image{
+    margin: auto;
+    display: flex;
+}
+.list-orders-div > .list-orders-middle-section > .list-orders-div-image > .list-orders-image{
+    height: 45vh;
+    display: flex;
+}
+/*END | LIST ORDERS PAGE SECTION*/
+
 /*START | ADDRESSES-LIST PAGE SECTION*/
 
-.list-adressed-middle-section{
-    width: 60%;
-    height: 40vh;
+.list-address-div{
+    width: 100%;
+    height: 120vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    margin: auto;
-    color:black;
+}
+.list-address-div > .list-address-middle-section{
+    width: 80%;
+    height: 120vh;
     background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.list-address-div > .list-address-middle-section > .list-address-header{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.list-address-div > .list-address-middle-section > .list-address-header > h1{
+    color: #00263B;
+    font-size: 4rem;
+}
+.list-address-div > .list-address-middle-section > .list-address-table-div{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00263B;
+}
+.list-address-div > .list-address-middle-section > .list-address-table-div > table{
+    font-size: 1.5rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #D70F35;
+}
+.list-address-div > .list-address-middle-section > .list-address-table-div > table > thead{
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: #00263B;
+    color: whitesmoke;
+}
+.list-address-div > .list-address-middle-section > .list-address-table-div > table > tbody{
+    text-align: center;
+    color: whitesmoke;
+}
+.list-address-div > .list-address-middle-section > .list-address-table-div > table > tbody >  tr > td{
+    padding: 10px;
+}
+.list-address-div > .list-address-middle-section > .list-address-table-div > table > tbody >  tr > td > form > button{
+    background-color: #00263B;
+    color: whitesmoke;
+    font-size: 2rem;
+    border-radius: 1rem;
+    transition: background-color 0.3s ease, transform 0.5s ease; /* Ustawienie efektu przejścia */
+}
+.list-address-div > .list-address-middle-section > .list-address-table-div > table > tbody >  tr > td > form > button:hover{
+    background-color: #FFD101;
+    color: #00263B;
 }
 
-.function-button{
+.list-address-div > .list-address-middle-section > .list-orders-button{
+    width: 20%;
+    height: 10vh;
     display: flex;
-    background-color: #00E3F9;
-    border-radius: 3rem;
-    text-decoration: none;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.75rem;
-    color:white;
-    margin-top: 40px;
-    width: 10vw;
-    height: 6vh;
+    margin-top: 2%;
 }
+.list-address-div > .list-address-middle-section > .list-orders-button > a{
+    width: 90%;
+    height: 70%;
+    background-color: #FF3F4C;
+    border-radius: 1rem;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    text-decoration: none;
+    color: #00263B;
+    text-align: center;
+    font-weight: bold;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    transition: background-color 0.3s ease, transform 0.5s ease;
+    display: flex; /* Center horizontally */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+.list-address-div > .list-address-middle-section > .list-orders-button > a:hover{
+    background-color: #FFD101;
+    color: #00263B;
+    transform: translate(3px, 3px);
+}
+.list-address-button-delete{
+    width: 100%;
+    height: 100%;
+}
+.list-address-div > .list-address-middle-section > .list-address-form{
+    width: 60%;
+    height:90vh;
+    display: flex;
+ }
 
+.list-address-div > .list-address-middle-section > .list-address-form > form{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.list-address-div > .list-address-middle-section > .list-address-form > form > .form-group{
+    width: 50%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:  #00263B;
+    flex-direction: column;
+
+}
+.list-address-div > .list-address-middle-section > .list-address-form > form > .form-group > .error{
+    color: red;
+    margin-top: 5px;
+}
+.list-address-div > .list-address-middle-section > .list-address-form > form > .form-group > .form-control{
+    display: flex;
+    width: 45%;
+    height: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 3px solid  #00263B;
+    font-style: italic;
+    border-radius: 1rem;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+}
+.list-address-div > .list-address-middle-section > .list-address-form > form > .form-group > .submit-button-form{
+    width: 60%;
+    height: 60%;
+    background-color: #FF3F4C;
+    border-radius: 1rem;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    font-weight: bold;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    transition: background-color 0.3s ease, transform 0.5s ease; /* Ustawienie efektu przejścia */
+}
+.list-address-div > .list-address-middle-section > .list-address-form > form > .form-group > .submit-button-form:hover{
+    background-color: #FFD101;
+    color: #00263B;
+    transform: translate(3px, 3px);
+}
 /*END | ADDRESSES-LIST PAGE SECTION*/
 
 /* START | FOOTER SECTION */

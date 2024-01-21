@@ -41,38 +41,66 @@
             <a th:href="@{/about}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">About us</a>
         </div>
     </div>
-    <h1>Add a new product:</h1>
-    <form th:action="@{/addresses/processAddressForm/}" th:object="${address}" method="POST">
-        <input type="text" class="mb-2" th:field="*{firstName}" placeholder="First Name"/>
-        <small class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" />
-        <br>
-        <input type="text" class="mb-2" th:field="*{lastName}" placeholder="Last Name"/>
-        <small class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" />
-        <br>
-        <input type="text" class="mb-2" th:field="*{street}" placeholder="Street"/>
-        <small class="error" th:if="${#fields.hasErrors('street')}" th:errors="*{street}" />
-        <br>
-        <input type="text" class="mb-2" th:field="*{buildingNumber}" placeholder="Building Number"/>
-        <small class="error" th:if="${#fields.hasErrors('buildingNumber')}" th:errors="*{buildingNumber}" />
-        <br>
-        <input type="text" class="mb-2" th:field="*{apartmentNumber}" placeholder="Apartment Number"/>
-        <small class="error" th:if="${#fields.hasErrors('apartmentNumber')}" th:errors="*{apartmentNumber}" />
-        (optional)
-        <br>
-        <input type="text" class="mb-2" th:field="*{zipCode}" placeholder="Zip Code"/>
-        <small class="error" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}" />
-        <br>
-        <input type="text" class="mb-2" th:field="*{city}" placeholder="City"/>
-        <small class="error" th:if="${#fields.hasErrors('city')}" th:errors="*{city}" />
-        <br>
-        <input type="text" class="mb-2" th:field="*{country}" placeholder="Country"/>
-        <small class="error" th:if="${#fields.hasErrors('country')}" th:errors="*{country}" />
-        <br>
-        <input type="number" class="mb-2" th:field="*{phoneNumber}" placeholder="Phone Number"/>
-        <small class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" />
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="list-address-div">
+        <div class="list-address-middle-section">
+            <div class="list-address-header">
+                <h1>Add a new product</h1>
+            </div>
+            <div class="list-address-form">
+                <form th:action="@{/addresses/processAddressForm/}" th:object="${address}" method="POST">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name"/>
+                        <small class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name"/>
+                        <small class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Street</label>
+                        <input type="text" class="form-control" th:field="*{street}" placeholder="Street"/>
+                        <small class="error" th:if="${#fields.hasErrors('street')}" th:errors="*{street}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Building Number</label>
+                        <input type="text" class="form-control" th:field="*{buildingNumber}" placeholder="Building Number"/>
+                        <small class="error" th:if="${#fields.hasErrors('buildingNumber')}" th:errors="*{buildingNumber}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Apartment Number (optional)</label>
+                        <input type="text" class="form-control" th:field="*{apartmentNumber}" placeholder="Apartment Number"/>
+                        <small class="error" th:if="${#fields.hasErrors('apartmentNumber')}" th:errors="*{apartmentNumber}" />
+
+                    </div>
+                    <div class="form-group">
+                        <label>Zip Code</label>
+                        <input type="text" class="form-control" th:field="*{zipCode}" placeholder="Zip Code"/>
+                        <small class="error" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}" />
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" class="form-control" th:field="*{city}" placeholder="City"/>
+                        <small class="error" th:if="${#fields.hasErrors('city')}" th:errors="*{city}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <input type="text" class="form-control" th:field="*{country}" placeholder="Country"/>
+                        <small class="error" th:if="${#fields.hasErrors('country')}" th:errors="*{country}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="number" class="form-control" th:field="*{phoneNumber}" placeholder="+XX XXX XXX XXX"/>
+                        <small class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" />
+                    </div>
+                    <div class="form-group">
+                        <input class="submit-button-form" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <footer>
         <div class=footer-div>
             <div class="footer-content">

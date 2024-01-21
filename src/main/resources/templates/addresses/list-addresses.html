@@ -44,46 +44,61 @@
     </div>
 
     <div th:if="${addedAddress}" class="alert" role="alert">
-        Adres został dodany pomyślnie.
+        <div class="left-side-text-alert">
+            Address has been successfully added.
+        </div>
+        <a href="#" class="closeLink">X</a>
     </div>
 
     <div th:if="${addressDeleted}" class="alert" role="alert">
-        Adres został usunięty.
+        <div class="left-side-text-alert">
+            Address has been deleted.
+        </div>
+        <a href="#" class="closeLink">X</a>
     </div>
 
-    <div class="list-adressed-middle-section">
-        <h1>Addresses list:</h1>
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Street, apartment</th>
-            <th>Zip Code</th>
-            <th>City</th>
-            <th>Country</th>
-            <th>Phone number</th>
-            <th>Action</th>
-            </thead>
 
-            <tbody>
-            <tr th:each="address : ${addresses}">
-                <td th:text="${address.firstName}" />
-                <td th:text="${address.lastName}" />
-                <td th:text="${address.fullAddress}" />
-                <td th:text="${address.zipCode}" />
-                <td th:text="${address.city}" />
-                <td th:text="${address.country}" />
-                <td th:text="${address.phoneNumber}" />
-                <td style="text-align: right;">
-                    <form th:action="@{/addresses/delete/}" method="POST">
-                        <input type="hidden" name="addressIdToDelete" th:value="${address.id}" />
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <a th:href="@{/addresses/addForm/}" class="function-button" tabindex="-1" role="button" aria-disabled="true">Add Address</a>
+    <div class="list-address-div">
+        <div class="list-address-middle-section">
+            <div class="list-address-header">
+                <h1>Addresses list</h1>
+            </div>
+            <div class="list-address-table-div">
+                <table class="list-address-table">
+                    <thead class="table-dark">
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Street, apartment</th>
+                    <th>Zip Code</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Phone number</th>
+                    <th>Action</th>
+                    </thead>
+
+                    <tbody>
+                        <tr th:each="address : ${addresses}">
+                            <td th:text="${address.firstName}" />
+                            <td th:text="${address.lastName}" />
+                            <td th:text="${address.fullAddress}" />
+                            <td th:text="${address.zipCode}" />
+                            <td th:text="${address.city}" />
+                            <td th:text="${address.country}" />
+                            <td th:text="${address.phoneNumber}" />
+                            <td>
+                                <form th:action="@{/addresses/delete/}" method="POST">
+                                    <input type="hidden" name="addressIdToDelete" th:value="${address.id}" />
+                                    <button type="submit" class="list-address-button-delete">X</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="list-orders-button">
+                <a th:href="@{/addresses/addForm/}" class="function-button" tabindex="-1" role="button" aria-disabled="true">Add Address</a>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -117,5 +132,6 @@
             </div>
         </div>
     </footer>
+    <script th:src="@{/js/AlertButtonClose.js}"></script>
 </body>
 </html>

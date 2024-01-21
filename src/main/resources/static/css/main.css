@@ -1315,19 +1315,14 @@ body{
     align-items: center;
     justify-content: center;
     color:  #00263B;
-    background-color: #D70F35;
     flex-direction: column;
     height: 20%;
 }
 .delivery-method-div > .delivery-method-middle-section > .delivery-method-form-div > form > .form-group-radio-button{
-    background-color: cadetblue;
     width: 80%;
     display: flex;
     flex-direction: column;
     text-align: center;
-}
-.delivery-method-div > .delivery-method-middle-section > .delivery-method-form-div > form > .form-group-radio-button > .delivery-method-type > .text-for-radio-button > input{
-    background-color: #D70F35;
 }
 .delivery-method-div > .delivery-method-middle-section > .delivery-method-form-div > form > .form-group > .error{
     color: red;
@@ -1369,13 +1364,210 @@ body{
 
 /* START | SELECT-ADDRESS SECTION */
 
+.select-address-div {
+    width: 100%;
+    height: 110vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
+.select-address-div > .select-address-middle-section{
+    width: 80%;
+    height: 110vh;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
 
+}
+.select-address-div > .select-address-middle-section > .select-address-header{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.select-address-div > .select-address-middle-section > .select-address-header > h1{
+    color: #00263B;
+    font-size: 4rem;
+
+}
+.select-address-div > .select-address-middle-section > .select-address-form-div{
+    width: 100%;
+    height: 42vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-address-div > .select-address-middle-section > .select-address-form-div > form{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    height: 72vh;
+}
+.select-address-div > .select-address-middle-section > .select-address-form-div > form > .form-group{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:  #00263B;
+    flex-direction: column;
+    height: 20%;
+}
+.select-address-div > .select-address-middle-section > .select-address-form-div > form > .form-group-radio-button{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.select-address-div > .select-address-middle-section > .select-address-form-div > form > .form-group > .error{
+    color: red;
+    margin-top: 5px;
+}
+.select-address-div > .select-address-middle-section > .select-address-form-div > form > .form-group > .form-control{
+    display: flex;
+    width: 45%;
+    height: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 3px solid  #00263B;
+    font-style: italic;
+    border-radius: 1rem;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+}
+.select-address-div > .select-address-middle-section > .select-address-form-div > form > .form-group > .submit-button-form{
+    width: 90%;
+    height: 50%;
+    background-color: #FF3F4C;
+    border-radius: 1rem;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    font-weight: bold;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    transition: background-color 0.3s ease, transform 0.5s ease; /* Ustawienie efektu przejścia */
+}
+.select-address-div > .select-address-middle-section > .select-address-form-div > form > .form-group > .submit-button-form:hover{
+    background-color: #FFD101;
+    color: #00263B;
+    transform: translate(3px, 3px);
+}
 /* END | SELECT-ADDRESS SECTION */
 
 /* START | ORDER-SUMMARY SECTION */
 
+.order-summary-div{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.order-summary-div > .order-summary-middle-section{
+    width: 80%;
+    height: 100vh;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
 
+}
+.order-summary-div > .order-summary-middle-section > .order-summary-header{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.order-summary-div > .order-summary-middle-section > .order-summary-header > h1{
+    color: #00263B;
+    font-size: 4rem;
+
+}
+.order-summary-div > .order-summary-middle-section > .order-summary-table-items > table{
+    font-size: 2rem;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: #D70F35;
+}
+.order-summary-div > .order-summary-middle-section > .order-summary-table-items > table > thead{
+    text-align: center;
+    font-size: 2rem;
+    background-color: #00263B;
+    color: whitesmoke;
+}
+.order-summary-div > .order-summary-middle-section > .order-summary-table-items > table > tbody{
+    text-align: center;
+    color: whitesmoke;
+}
+.order-summary-div > .order-summary-middle-section > .order-summary-table-items > table > tbody >  tr > td{
+    padding: 5px;
+}
+.order-summary-table-delivery{
+    width: 80%;
+    display: flex;
+    height: 40vh;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 1.5rem;
+    flex-direction: column;
+
+}
+.order-summary-table-delivery > .order-summary-table-delivery-header{
+    color: #00263B;
+    font-size: 2rem;
+}
+.order-summary-table-addresses{
+    width: 90%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+}
+.order-summary-table-addresses > .order-summary-table-addresses-header{
+    font-size: 2rem;
+    color: #00263B;
+
+}
+.order-summary-table-addresses > .order-summary-table-addresses-table{
+    width: 60%;
+    height: 80%;
+    text-align: center;
+}
+.order-summary-table-addresses > .order-summary-table-addresses-table > form > .submit-button-form{
+    width: 60%;
+    height: 10vh;
+    background-color: #FF3F4C;
+    border-radius: 1rem;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    font-weight: bold;
+    margin-top: 3rem;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    box-shadow: 5px 5px 0px 0px rgba(66, 68, 90, 1);
+    transition: background-color 0.3s ease, transform 0.5s ease; /* Ustawienie efektu przejścia */
+}
+
+.order-summary-table-addresses > .order-summary-table-addresses-table > form > .submit-button-form:hover{
+    background-color: #FFD101;
+    color: #00263B;
+    transform: translate(3px, 3px);
+}
 
 /* END | ORDER-SUMMARY SECTION */
 

@@ -41,51 +41,74 @@
             <a th:href="@{/about}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">About us</a>
         </div>
     </div>
-    <h1 class="mt-3">Order Summary</h1>
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-            <th>Product Name</th>
-            <th>Quantity</th>
-            <th>Unit Price</th>
-            <th>Total Value</th>
-        </thead>
-        <tbody>
-            <tr th:each="pwq : ${order.productsWithQuantities}">
-                <td th:text="${pwq.product.name}" />
-                <td th:text="${pwq.quantity}" />
-                <td th:text="${pwq.product.price} + ' zł'" />
-                <td th:text="${pwq.getTotalValue()} + ' zł'" />
-            </tr>
-        </tbody>
-    </table>
 
-    <h2>Delivery Method:</h2>
+    <div class="order-summary-div">
 
-    <span th:text="${order.deliveryMethod.name} + ' ' + ${order.deliveryMethod.price}"/> zł
+        <div class="order-summary-middle-section">
+            <div class="order-summary-header">
+                <h1>Order Summary</h1>
+            </div>
 
-    <div class="cart-total">
-        <strong>In Total:</strong> <span th:text="${order.totalValue} + ' zł'"></span>
+            <div class="order-summary-table-items">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total Value</th>
+                    </thead>
+                    <tbody>
+                        <tr th:each="pwq : ${order.productsWithQuantities}">
+                            <td th:text="${pwq.product.name}" />
+                            <td th:text="${pwq.quantity}" />
+                            <td th:text="${pwq.product.price} + ' zł'" />
+                            <td th:text="${pwq.getTotalValue()} + ' zł'" />
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="order-summary-table-delivery">
+                <div class="order-summary-table-delivery-header">
+                    <h2>Delivery Method</h2>
+                </div>
+                <div class="order-summary-table-delivery-table">
+                    <span th:text="${order.deliveryMethod.name} + ' ' + ${order.deliveryMethod.price}"/> zł
+
+                    <div class="cart-total">
+                        <strong>In Total:</strong> <span th:text="${order.totalValue} + ' zł'"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-summary-table-addresses">
+                <div class="order-summary-table-addresses-header">
+                    <h2>Address</h2>
+                </div>
+
+                    <div class="order-summary-table-addresses-table">
+                    <span th:text="${order.address.firstName} + ' ' + ${order.address.lastName}"/>
+                    <br>
+                    <span th:text="${order.address.zipCode} + ' ' + ${order.address.city}"/>
+                    <br>
+                    <span th:text="${order.address.country}"/>
+                    <br>
+                    <span th:text="${order.address.phoneNumber}"/>
+                    <br>
+                    <span th:text="${order.address.fullAddress}"/>
+
+                    <form th:action="@{/orders/submitOrder/}" method="POST">
+                        <input type="hidden" th:name="selectedDeliveryMethodId" th:value="${order.deliveryMethod.id}">
+                        <input type="hidden" th:name="selectedAddressId" th:value="${order.address.id}">
+                        <button type="submit" class="submit-button-form">Submit Order</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
     </div>
 
-    <br>
-
-    <h2>Address:</h2>
-
-    <span th:text="${order.address.firstName} + ' ' + ${order.address.lastName}"/>
-    <br>
-    <span th:text="${order.address.zipCode} + ' ' + ${order.address.city}"/>
-    <br>
-    <span th:text="${order.address.country}"/>
-    <br>
-    <span th:text="${order.address.phoneNumber}"/>
-    <br>
-    <span th:text="${order.address.fullAddress}"/>
-
-    <form th:action="@{/orders/submitOrder/}" method="POST">
-        <input type="hidden" th:name="selectedDeliveryMethodId" th:value="${order.deliveryMethod.id}">
-        <input type="hidden" th:name="selectedAddressId" th:value="${order.address.id}">
-        <button type="submit" class="btn btn-success mt-4">Submit Order</button>
-    </form>
     <footer>
         <div class=footer-div>
             <div class="footer-content">

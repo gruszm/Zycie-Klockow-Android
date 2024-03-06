@@ -48,4 +48,21 @@ public class DeliveryMethodRepository implements DeliveryMethodDAO
             return null;
         }
     }
+
+    @Override
+    @Transactional
+    public DeliveryMethod deleteById(int id)
+    {
+        DeliveryMethod deliveryMethod = entityManager.find(DeliveryMethod.class, id);
+
+        if (deliveryMethod == null)
+        {
+            return null;
+        }
+        else
+        {
+            entityManager.remove(deliveryMethod);
+            return deliveryMethod;
+        }
+    }
 }

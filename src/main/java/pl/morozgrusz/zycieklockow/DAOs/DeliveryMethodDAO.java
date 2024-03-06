@@ -9,4 +9,5 @@ public interface DeliveryMethodDAO
     List<DeliveryMethod> findAll();
     void save(DeliveryMethod deliveryMethod);
     DeliveryMethod findById(int id);
+    DeliveryMethod deleteById(int id);
 }

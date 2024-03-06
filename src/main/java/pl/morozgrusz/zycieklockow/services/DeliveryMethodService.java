@@ -32,4 +32,9 @@ public class DeliveryMethodService
     {
         return deliveryMethodRepository.findById(id);
     }
+
+    public DeliveryMethod deleteById(int id)
+    {
+        return deliveryMethodRepository.deleteById(id);
+    }
 }

@@ -18,9 +18,9 @@ public class DeliveryMethodService
         this.deliveryMethodRepository = deliveryMethodRepository;
     }
 
-    public void save(DeliveryMethod deliveryMethod)
+    public DeliveryMethod save(DeliveryMethod deliveryMethod)
     {
-        deliveryMethodRepository.save(deliveryMethod);
+        return deliveryMethodRepository.save(deliveryMethod);
     }
 
     public List<DeliveryMethod> findAll()

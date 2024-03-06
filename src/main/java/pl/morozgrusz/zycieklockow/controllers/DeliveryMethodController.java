@@ -53,11 +53,11 @@ public class DeliveryMethodController
     @PostMapping("/add")
     public ResponseEntity<DeliveryMethod> addDeliveryMethod(@RequestBody DeliveryMethod deliveryMethod)
     {
-        deliveryMethodService.save(deliveryMethod);
+        DeliveryMethod savedDeliveryMethod = deliveryMethodService.save(deliveryMethod);
 
         return ResponseEntity
                 .ok()
-                .body(deliveryMethod);
+                .body(savedDeliveryMethod);
     }
 
     @DeleteMapping("/delete/{id}")

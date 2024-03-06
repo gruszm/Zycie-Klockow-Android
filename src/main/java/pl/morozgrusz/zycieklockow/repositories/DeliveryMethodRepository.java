@@ -23,9 +23,11 @@ public class DeliveryMethodRepository implements DeliveryMethodDAO
 
     @Override
     @Transactional
-    public void save(DeliveryMethod deliveryMethod)
+    public DeliveryMethod save(DeliveryMethod deliveryMethod)
     {
         entityManager.merge(deliveryMethod);
+
+        return deliveryMethod;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package pl.morozgrusz.zycieklockow.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -20,6 +21,7 @@ public class DeliveryMethod
     @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "deliveryMethod", fetch = FetchType.LAZY,
                cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE})
     private List<Order> orders;

@@ -23,9 +23,11 @@ public class DeliveryMethodRepository implements DeliveryMethodDAO
 
     @Override
     @Transactional
-    public void save(DeliveryMethod deliveryMethod)
+    public DeliveryMethod save(DeliveryMethod deliveryMethod)
     {
         entityManager.merge(deliveryMethod);
+
+        return deliveryMethod;
     }
 
     @Override
@@ -46,6 +48,23 @@ public class DeliveryMethodRepository implements DeliveryMethodDAO
         catch (IllegalArgumentException e)
         {
             return null;
+        }
+    }
+
+    @Override
+    @Transactional
+    public DeliveryMethod deleteById(int id)
+    {
+        DeliveryMethod deliveryMethod = entityManager.find(DeliveryMethod.class, id);
+
+        if (deliveryMethod == null)
+        {
+            return null;
+        }
+        else
+        {
+            entityManager.remove(deliveryMethod);
+            return deliveryMethod;
         }
     }
 }

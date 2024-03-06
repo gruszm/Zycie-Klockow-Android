@@ -18,9 +18,9 @@ public class DeliveryMethodService
         this.deliveryMethodRepository = deliveryMethodRepository;
     }
 
-    public void save(DeliveryMethod deliveryMethod)
+    public DeliveryMethod save(DeliveryMethod deliveryMethod)
     {
-        deliveryMethodRepository.save(deliveryMethod);
+        return deliveryMethodRepository.save(deliveryMethod);
     }
 
     public List<DeliveryMethod> findAll()
@@ -31,5 +31,10 @@ public class DeliveryMethodService
     public DeliveryMethod findById(int id)
     {
         return deliveryMethodRepository.findById(id);
+    }
+
+    public DeliveryMethod deleteById(int id)
+    {
+        return deliveryMethodRepository.deleteById(id);
     }
 }

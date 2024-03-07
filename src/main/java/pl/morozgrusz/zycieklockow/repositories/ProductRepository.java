@@ -23,9 +23,9 @@ public class ProductRepository implements ProductDAO
 
     @Override
     @Transactional
-    public void save(Product product)
+    public Product save(Product product)
     {
-        entityManager.merge(product);
+        return entityManager.merge(product);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class ProductRepository implements ProductDAO
 
     @Override
     @Transactional
-    public void deleteById(int id)
+    public Product deleteById(int id)
     {
         Product product = entityManager.find(Product.class, id);
 
@@ -46,6 +46,8 @@ public class ProductRepository implements ProductDAO
         {
             entityManager.remove(product);
         }
+
+        return product;
     }
 
     @Override

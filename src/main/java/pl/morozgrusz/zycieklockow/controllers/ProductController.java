@@ -1,70 +1,90 @@
 package pl.morozgrusz.zycieklockow.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.morozgrusz.zycieklockow.entities.Category;
 import pl.morozgrusz.zycieklockow.entities.Product;
-import pl.morozgrusz.zycieklockow.services.CategoryService;
 import pl.morozgrusz.zycieklockow.services.ProductService;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("/products")
+@RestController
+@RequestMapping("/api/products")
 public class ProductController
 {
     private ProductService productService;
-    private CategoryService categoryService;
 
     @Autowired
-    public ProductController(ProductService productService, CategoryService categoryService)
+    public ProductController(ProductService productService)
     {
         this.productService = productService;
-        this.categoryService = categoryService;
     }
 
-    @GetMapping("/")
-    public String getAllProducts(Model model)
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProduct(@PathVariable(name = "id") int id)
     {
-        model.addAttribute("products", productService.findAll());
+        Product product = productService.findById(id);
 
-        return "products/list-products";
+        if (product == null)
+        {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(null);
+        }
+        else
+        {
+            return ResponseEntity
+                    .ok()
+                    .body(product);
+        }
     }
 
-    @PostMapping("/delete/")
-    public String deleteProduct(@RequestParam(name = "productIdToDelete") int id, RedirectAttributes redirectAttributes)
+    @GetMapping
+    public ResponseEntity<List<Product>> getAllProducts()
     {
-        productService.deleteById(id);
+        List<Product> allProducts = productService.findAll();
 
-        redirectAttributes.addFlashAttribute("productDeleted", id);
-
-        return "redirect:/products/";
+        return ResponseEntity
+                .ok()
+                .body(allProducts);
     }
 
-    @GetMapping("/addForm/")
-    public String addProductForm(Model model)
+    @PostMapping("/add")
+    public ResponseEntity<Product> addProduct(@RequestBody Product product)
     {
-        Product product = new Product();
-        List<Category> categories = categoryService.findAll();
+        Product savedProduct = productService.save(product);
 
-        model.addAttribute("product", product);
-        model.addAttribute("categories", categories);
-
-        return "products/product-form";
+        if (savedProduct == null)
+        {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body(null);
+        }
+        else
+        {
+            return ResponseEntity
+                    .ok()
+                    .body(savedProduct);
+        }
     }
 
-    @PostMapping("/processProductForm/")
-    public String processAddProductForm(@ModelAttribute(name = "product") Product product, @RequestParam(name = "categoryId") int categoryId, RedirectAttributes redirectAttributes)
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Product> deleteProduct(@PathVariable(name = "id") int id)
     {
-        productService.saveWithCategoryId(product, categoryId);
+        Product deletedProduct = productService.deleteById(id);
 
-        redirectAttributes.addFlashAttribute("addedProductName", product.getName());
-        redirectAttributes.addFlashAttribute("addedProductPrice", product.getPrice());
-        redirectAttributes.addFlashAttribute("addedProductQuantity", product.getQuantity());
-
-        return "redirect:/products/";
+        if (deletedProduct == null)
+        {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(null);
+        }
+        else
+        {
+            return ResponseEntity
+                    .ok()
+                    .body(deletedProduct);
+        }
     }
 }

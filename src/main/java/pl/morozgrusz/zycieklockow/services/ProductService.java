@@ -2,9 +2,7 @@ package pl.morozgrusz.zycieklockow.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.morozgrusz.zycieklockow.entities.Category;
 import pl.morozgrusz.zycieklockow.entities.Product;
-import pl.morozgrusz.zycieklockow.repositories.CategoryRepository;
 import pl.morozgrusz.zycieklockow.repositories.ProductRepository;
 
 import java.util.List;
@@ -13,25 +11,16 @@ import java.util.List;
 public class ProductService
 {
     private ProductRepository productRepository;
-    private CategoryRepository categoryRepository;
 
     @Autowired
-    public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository)
+    public ProductService(ProductRepository productRepository)
     {
         this.productRepository = productRepository;
-        this.categoryRepository = categoryRepository;
     }
 
-    public void save(Product product)
+    public Product save(Product product)
     {
-        productRepository.save(product);
-    }
-
-    public void saveWithCategoryId(Product product, int categoryId)
-    {
-        Category category = categoryRepository.findById(categoryId);
-        product.setCategory(category);
-        productRepository.save(product);
+        return productRepository.save(product);
     }
 
     public List<Product> findAll()
@@ -39,8 +28,13 @@ public class ProductService
         return productRepository.findAll();
     }
 
-    public void deleteById(int id)
+    public Product deleteById(int id)
     {
-        productRepository.deleteById(id);
+        return productRepository.deleteById(id);
+    }
+
+    public Product findById(int id)
+    {
+        return productRepository.findById(id);
     }
 }

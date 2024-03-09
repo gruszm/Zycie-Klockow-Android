@@ -1,81 +1,53 @@
 package pl.morozgrusz.zycieklockow.security;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.morozgrusz.zycieklockow.datatransferobjects.UserDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+import pl.morozgrusz.zycieklockow.entities.User;
 import pl.morozgrusz.zycieklockow.services.UserService;
 
-@Controller
+@RestController
+@RequestMapping("/api/auth")
 public class SecurityController
 {
     private UserService userService;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public SecurityController(UserService userService)
+    public SecurityController(UserService userService, PasswordEncoder passwordEncoder)
     {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/login")
-    public String loginForm()
+    public ResponseEntity<String> authenticate(@RequestBody LoginRequest loginRequest)
     {
-        return "security/login-form";
-    }
+        User foundUser = userService.findUserByEmail(loginRequest.getEmail());
+        String encodedPassword;
 
-    @GetMapping("/register")
-    public String getRegistrationForm(Model model)
-    {
-        UserDTO userDTO = new UserDTO();
-
-        model.addAttribute("user_dto", userDTO);
-
-        return "security/register";
-    }
-
-    @PostMapping("/processRegistration")
-    public String processRegistration(@Valid @ModelAttribute("user_dto") UserDTO userDTO,
-                                      BindingResult bindingResult,
-                                      RedirectAttributes redirectAttributes)
-    {
-        if (bindingResult.hasErrors())
+        if (foundUser == null)
         {
-            return "security/register";
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(null);
         }
 
-        if (!userDTO.getPassword().equals(userDTO.getRepeatPassword()))
+        encodedPassword = foundUser.getPassword();
+
+        if (passwordEncoder.matches(loginRequest.getPassword(), encodedPassword))
         {
-            bindingResult.addError(new FieldError("user_dto", "repeatPassword",
-                    "The passwords are not the same"));
-
-            return "security/register";
+            return ResponseEntity
+                    .ok()
+                    .body(JwtUtils.createToken(loginRequest.getEmail(), foundUser.getRoles().stream().map(role -> role.getRole()).toList()));
         }
-
-        if (userService.findUserByEmail(userDTO.getEmail()) != null)
+        else
         {
-            bindingResult.addError(new FieldError("user_dto", "email",
-                    "A user with this email already exists"));
-
-            return "security/register";
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body(null);
         }
-
-        userService.save(userDTO);
-
-        redirectAttributes.addAttribute("registered", "");
-
-        return "redirect:/";
-    }
-
-    @GetMapping("/accessDenied")
-    public String accessDenied()
-    {
-        return "security/access-denied";
     }
 }

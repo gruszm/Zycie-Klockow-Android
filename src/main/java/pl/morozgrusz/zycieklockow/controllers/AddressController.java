@@ -34,10 +34,10 @@ public class AddressController
     }
 
     @GetMapping("/specific")
-    public ResponseEntity<List<Address>> getSpecificAddresses(@RequestHeader(name = "Authentication") String jwt)
+    public ResponseEntity<List<Address>> getSpecificAddresses(@RequestHeader(name = "Auth") String jwt)
     {
         UserDetails ud = JwtUtils.readToken(jwt);
-        List<Address> listOfUsersAddresses;
+        List<Address> listOfUserAddresses;
 
         if (ud == null)
         {
@@ -46,11 +46,11 @@ public class AddressController
                     .body(null);
         }
 
-        listOfUsersAddresses = addressService.findByUserEmail(ud.getEmail());
+        listOfUserAddresses = addressService.findByUserEmail(ud.getEmail());
 
         return ResponseEntity
                 .ok()
-                .body(listOfUsersAddresses);
+                .body(listOfUserAddresses);
     }
 
     @GetMapping("/add")

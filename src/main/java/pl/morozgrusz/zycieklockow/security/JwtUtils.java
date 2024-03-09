@@ -26,7 +26,7 @@ public class JwtUtils
     }
 
 
-    public static UserDetails readToken(String token) throws JWTVerificationException
+    public static UserDetails readToken(String token)
     {
         try
         {

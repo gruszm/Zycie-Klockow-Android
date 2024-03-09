@@ -1,5 +1,6 @@
 package pl.morozgrusz.zycieklockow.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -27,16 +28,20 @@ public class Product
     @Column(name = "quantity")
     private int quantity;
 
+    @JsonIgnore
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "category_fk")
     private Category category;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ProductWithQuantity> productsWithQuantities;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<Rating> ratings;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Image> images;
 

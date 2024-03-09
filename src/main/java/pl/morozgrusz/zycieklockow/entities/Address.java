@@ -1,5 +1,6 @@
 package pl.morozgrusz.zycieklockow.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -49,10 +50,12 @@ public class Address
     @NotNull(message = "This field is required")
     private String phoneNumber;
 
+    @JsonIgnore
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "user_fk")
     private User user;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "address", fetch = FetchType.LAZY,
                cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE})
     private List<Order> orders;

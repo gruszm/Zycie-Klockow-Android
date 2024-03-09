@@ -4,23 +4,23 @@ import java.util.List;
 
 public class UserDetails
 {
-    private String username;
+    private String email;
     private List<String> roles;
 
-    public UserDetails(String username, List<String> roles)
+    public UserDetails(String email, List<String> roles)
     {
-        this.username = username;
+        this.email = email;
         this.roles = roles;
     }
 
-    public String getUsername()
+    public String getEmail()
     {
-        return username;
+        return email;
     }
 
-    public void setUsername(String username)
+    public void setEmail(String email)
     {
-        this.username = username;
+        this.email = email;
     }
 
     public List<String> getRoles()

@@ -31,9 +31,9 @@ public class AddressRepository implements AddressDAO
 
     @Override
     @Transactional
-    public void save(Address address)
+    public Address save(Address address)
     {
-        entityManager.merge(address);
+        return entityManager.merge(address);
     }
 
     @Override

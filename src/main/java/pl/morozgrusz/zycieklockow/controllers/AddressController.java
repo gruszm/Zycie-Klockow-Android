@@ -1,20 +1,18 @@
 package pl.morozgrusz.zycieklockow.controllers;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.morozgrusz.zycieklockow.entities.Address;
+import pl.morozgrusz.zycieklockow.security.JwtUtils;
+import pl.morozgrusz.zycieklockow.security.UserDetails;
 import pl.morozgrusz.zycieklockow.services.AddressService;
 
-import java.security.Principal;
 import java.util.List;
 
-@Controller
-@RequestMapping("/addresses")
+@RestController
+@RequestMapping("/api/addresses")
 public class AddressController
 {
     private AddressService addressService;
@@ -25,53 +23,62 @@ public class AddressController
         this.addressService = addressService;
     }
 
-    @GetMapping("/")
-    public String getAllAddresses(Model model, Principal principal)
+    @GetMapping("/all")
+    public ResponseEntity<List<Address>> getAllAddresses()
     {
-        List<Address> addressesOfLoggedUser = addressService.findByUserEmail(principal.getName());
+        List<Address> addresses = addressService.findAll();
 
-        model.addAttribute("addresses", addressesOfLoggedUser);
-
-        return "addresses/list-addresses";
+        return ResponseEntity
+                .ok()
+                .body(addresses);
     }
 
-    @GetMapping("/addForm/")
-    public String addAddressForm(Model model)
+    @GetMapping("/specific")
+    public ResponseEntity<List<Address>> getSpecificAddresses(@RequestHeader(name = "Authentication") String jwt)
     {
-        Address address = new Address();
+        UserDetails ud = JwtUtils.readToken(jwt);
+        List<Address> listOfUsersAddresses;
 
-        model.addAttribute("address", address);
-
-        return "addresses/address-form";
-    }
-
-    @PostMapping("/processAddressForm/")
-    public String processAddAddressForm(@Valid @ModelAttribute(name = "address") Address address,
-                                        BindingResult bindingResult,
-                                        Principal principal,
-                                        RedirectAttributes redirectAttributes)
-    {
-        if (bindingResult.hasErrors())
+        if (ud == null)
         {
-            return "addresses/address-form";
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body(null);
+        }
+
+        listOfUsersAddresses = addressService.findByUserEmail(ud.getEmail());
+
+        return ResponseEntity
+                .ok()
+                .body(listOfUsersAddresses);
+    }
+
+    @GetMapping("/add")
+    public ResponseEntity<Address> addAddress(@RequestHeader(name = "Authentication") String jwt, @RequestBody Address address)
+    {
+        UserDetails ud = JwtUtils.readToken(jwt);
+        Address savedAddress;
+
+        if (ud == null)
+        {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body(null);
+        }
+
+        savedAddress = addressService.saveForEmail(address, ud.getEmail());
+
+        if (savedAddress == null)
+        {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body(null);
         }
         else
         {
-            addressService.saveByEmail(address, principal.getName());
-
-            redirectAttributes.addFlashAttribute("addedAddress", "");
-
-            return "redirect:/addresses/";
+            return ResponseEntity
+                    .ok()
+                    .body(savedAddress);
         }
-    }
-
-    @PostMapping("/delete/")
-    public String deleteProduct(@RequestParam(name = "addressIdToDelete") int id, RedirectAttributes redirectAttributes)
-    {
-        addressService.deleteById(id);
-
-        redirectAttributes.addFlashAttribute("addressDeleted", "");
-
-        return "redirect:/addresses/";
     }
 }

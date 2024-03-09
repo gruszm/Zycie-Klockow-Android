@@ -27,27 +27,18 @@ public class AddressService
         return addressRepository.findAll();
     }
 
-    public void save(Address address)
-    {
-        addressRepository.save(address);
-    }
-
-    public List<Address> findByUserId(int id)
-    {
-        return addressRepository.findByUserId(id);
-    }
-
     public List<Address> findByUserEmail(String email)
     {
         return addressRepository.findByUserEmail(email);
     }
 
-    public void saveByEmail(Address address, String email)
+    public Address saveForEmail(Address address, String email)
     {
         User user = userRepository.findByEmail(email);
 
         address.setUser(user);
-        addressRepository.save(address);
+
+        return addressRepository.save(address);
     }
 
     public void deleteById(int id)

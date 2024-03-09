@@ -7,7 +7,7 @@ import java.util.List;
 public interface AddressDAO
 {
     List<Address> findAll();
-    void save(Address address);
+    Address save(Address address);
     List<Address> findByUserId(int id);
     List<Address> findByUserEmail(String email);
     void deleteById(int id);

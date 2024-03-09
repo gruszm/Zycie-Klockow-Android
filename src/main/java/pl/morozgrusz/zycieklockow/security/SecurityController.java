@@ -23,7 +23,7 @@ public class SecurityController
     }
 
     @GetMapping("/login")
-    public ResponseEntity<String> verifyLogin(@RequestBody LoginRequest loginRequest)
+    public ResponseEntity<String> authenticate(@RequestBody LoginRequest loginRequest)
     {
         User foundUser = userService.findUserByEmail(loginRequest.getEmail());
         String encodedPassword;

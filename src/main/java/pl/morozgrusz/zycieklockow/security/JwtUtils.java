@@ -12,7 +12,7 @@ import java.util.List;
 public class JwtUtils
 {
     private static final String SECRET = "SECRET";
-    private static final long EXPIRATION_TIME = 900_000;
+    private static final long expirationTimeSeconds = 900;
 
     public static String createToken(String userEmail, List<String> roles)
     {
@@ -21,7 +21,7 @@ public class JwtUtils
                 .withClaim("userEmail", userEmail)
                 .withArrayClaim("userRoles", roles.toArray(new String[0]))
                 .withIssuedAt(new Date())
-                .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .withExpiresAt(new Date(System.currentTimeMillis() + (expirationTimeSeconds * 1000)))
                 .sign(Algorithm.HMAC512(SECRET));
     }
 

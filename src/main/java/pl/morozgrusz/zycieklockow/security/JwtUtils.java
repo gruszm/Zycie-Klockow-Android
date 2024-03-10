@@ -12,7 +12,7 @@ import java.util.List;
 public class JwtUtils
 {
     private static final String SECRET = "SECRET";
-    private static final long expirationTimeSeconds = 900;
+    private static final long expirationTimeSeconds = 86400;
 
     public static String createToken(String userEmail, List<String> roles)
     {

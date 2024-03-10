@@ -26,6 +26,11 @@ public class ProductWithQuantityService
         this.productRepository = productRepository;
     }
 
+    public ProductWithQuantity findById(int id)
+    {
+        return productWithQuantityRepository.findById(id);
+    }
+
     public List<ProductWithQuantity> findByUserEmail(String email)
     {
         return productWithQuantityRepository.findByUserEmail(email);
@@ -36,12 +41,11 @@ public class ProductWithQuantityService
         productWithQuantityRepository.deleteById(id);
     }
 
-    public void addProductToCartByEmail(String email, int productId)
+    public ProductWithQuantity addProductToCartByEmail(String email, int productId)
     {
         User user = userRepository.findByEmail(email);
         Product product = productRepository.findById(productId);
         List<ProductWithQuantity> userCart = user.getProductsWithQuantities();
-        boolean productNotInCart = true;
 
         for (ProductWithQuantity pwq : userCart)
         {
@@ -50,12 +54,11 @@ public class ProductWithQuantityService
                 pwq.incrementQuantity();
                 productWithQuantityRepository.save(pwq);
 
-                productNotInCart = false;
-                break;
+                return pwq;
             }
         }
 
-        if (productNotInCart && (product.getQuantity() > 0))
+        if (product.getQuantity() > 0)
         {
             ProductWithQuantity pwq = new ProductWithQuantity();
             pwq.setProduct(product);
@@ -63,6 +66,15 @@ public class ProductWithQuantityService
             pwq.setQuantity(1);
 
             productWithQuantityRepository.save(pwq);
+
+            return pwq;
         }
+
+        return null;
+    }
+
+    public ProductWithQuantity delete(ProductWithQuantity productWithQuantity)
+    {
+        return productWithQuantityRepository.delete(productWithQuantity);
     }
 }

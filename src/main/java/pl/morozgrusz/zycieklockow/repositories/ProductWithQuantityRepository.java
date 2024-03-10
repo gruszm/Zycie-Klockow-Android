@@ -22,6 +22,14 @@ public class ProductWithQuantityRepository implements ProductWithQuantityDAO
     }
 
     @Override
+    public ProductWithQuantity findById(int id)
+    {
+        ProductWithQuantity productWithQuantity = entityManager.find(ProductWithQuantity.class, id);
+
+        return productWithQuantity;
+    }
+
+    @Override
     public List<ProductWithQuantity> findByUserEmail(String email)
     {
         TypedQuery<ProductWithQuantity> query = entityManager.createQuery(
@@ -51,5 +59,17 @@ public class ProductWithQuantityRepository implements ProductWithQuantityDAO
     public void save(ProductWithQuantity productWithQuantity)
     {
         entityManager.merge(productWithQuantity);
+    }
+
+    @Override
+    @Transactional
+    public ProductWithQuantity delete(ProductWithQuantity productWithQuantity)
+    {
+        if (productWithQuantity != null)
+        {
+            entityManager.remove(productWithQuantity);
+        }
+
+        return productWithQuantity;
     }
 }

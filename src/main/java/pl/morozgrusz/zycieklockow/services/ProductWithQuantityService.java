@@ -89,9 +89,15 @@ public class ProductWithQuantityService
             return null;
         }
 
+        pwq.setQuantity(pwq.getQuantity() - 1);
+
         if (pwq.getQuantity() > 0)
         {
-            pwq.setQuantity(pwq.getQuantity() - 1);
+            save(pwq);
+        }
+        else
+        {
+            delete(pwq);
         }
 
         return pwq;

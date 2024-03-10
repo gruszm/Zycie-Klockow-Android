@@ -113,15 +113,6 @@ public class CartController
 
         cartElement = productWithQuantityService.decrease(id);
 
-        if (cartElement.getQuantity() == 0)
-        {
-            productWithQuantityService.deleteById(id);
-        }
-        else
-        {
-            productWithQuantityService.save(cartElement);
-        }
-
         return ResponseEntity
                 .ok()
                 .body(cartElement);

@@ -42,7 +42,7 @@ public class AddressController
         if (ud == null)
         {
             return ResponseEntity
-                    .status(HttpStatus.FORBIDDEN)
+                    .status(HttpStatus.UNAUTHORIZED)
                     .body(null);
         }
 
@@ -62,7 +62,7 @@ public class AddressController
         if (ud == null)
         {
             return ResponseEntity
-                    .status(HttpStatus.FORBIDDEN)
+                    .status(HttpStatus.UNAUTHORIZED)
                     .body(null);
         }
 
@@ -71,7 +71,7 @@ public class AddressController
         if (savedAddress == null)
         {
             return ResponseEntity
-                    .status(HttpStatus.FORBIDDEN)
+                    .status(HttpStatus.BAD_REQUEST)
                     .body(null);
         }
         else

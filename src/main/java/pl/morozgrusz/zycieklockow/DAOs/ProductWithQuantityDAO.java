@@ -9,4 +9,6 @@ public interface ProductWithQuantityDAO
     List<ProductWithQuantity> findByUserEmail(String email);
     void deleteById(int id);
     void save(ProductWithQuantity productWithQuantity);
+    ProductWithQuantity findById(int id);
+    ProductWithQuantity delete(ProductWithQuantity productWithQuantity);
 }

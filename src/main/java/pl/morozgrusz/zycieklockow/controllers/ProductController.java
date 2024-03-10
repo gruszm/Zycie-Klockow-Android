@@ -58,7 +58,7 @@ public class ProductController
         if (savedProduct == null)
         {
             return ResponseEntity
-                    .status(HttpStatus.FORBIDDEN)
+                    .status(HttpStatus.BAD_REQUEST)
                     .body(null);
         }
         else

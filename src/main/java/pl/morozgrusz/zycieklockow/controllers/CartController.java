@@ -91,6 +91,42 @@ public class CartController
         }
     }
 
+    @PostMapping("/decrease/{id}")
+    public ResponseEntity<ProductWithQuantity> decreaseCartElement(@RequestHeader(name = "Auth") String jwt, @PathVariable(name = "id") int id)
+    {
+        UserDetails ud = JwtUtils.readToken(jwt);
+        ProductWithQuantity cartElement;
+
+        if (ud == null)
+        {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body(null);
+        }
+
+        if (productWithQuantityService.findById(id) == null)
+        {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(null);
+        }
+
+        cartElement = productWithQuantityService.decrease(id);
+
+        if (cartElement.getQuantity() == 0)
+        {
+            productWithQuantityService.deleteById(id);
+        }
+        else
+        {
+            productWithQuantityService.save(cartElement);
+        }
+
+        return ResponseEntity
+                .ok()
+                .body(cartElement);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteFromCart(@RequestHeader(name = "Auth") String jwt, @PathVariable(name = "id") int id)
     {

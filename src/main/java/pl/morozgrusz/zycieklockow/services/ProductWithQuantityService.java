@@ -41,6 +41,13 @@ public class ProductWithQuantityService
         productWithQuantityRepository.deleteById(id);
     }
 
+    public ProductWithQuantity save(ProductWithQuantity pwq)
+    {
+        productWithQuantityRepository.save(pwq);
+
+        return pwq;
+    }
+
     public ProductWithQuantity addProductToCartByEmail(String email, int productId)
     {
         User user = userRepository.findByEmail(email);
@@ -71,6 +78,23 @@ public class ProductWithQuantityService
         }
 
         return null;
+    }
+
+    public ProductWithQuantity decrease(int id)
+    {
+        ProductWithQuantity pwq = productWithQuantityRepository.findById(id);
+
+        if (pwq == null)
+        {
+            return null;
+        }
+
+        if (pwq.getQuantity() > 0)
+        {
+            pwq.setQuantity(pwq.getQuantity() - 1);
+        }
+
+        return pwq;
     }
 
     public ProductWithQuantity delete(ProductWithQuantity productWithQuantity)

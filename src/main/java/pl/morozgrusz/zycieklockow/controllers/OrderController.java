@@ -1,21 +1,22 @@
 package pl.morozgrusz.zycieklockow.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import pl.morozgrusz.zycieklockow.datatransferobjects.OrderDTO;
 import pl.morozgrusz.zycieklockow.entities.*;
-import pl.morozgrusz.zycieklockow.services.*;
+import pl.morozgrusz.zycieklockow.security.JwtUtils;
+import pl.morozgrusz.zycieklockow.security.UserDetails;
+import pl.morozgrusz.zycieklockow.services.AddressService;
+import pl.morozgrusz.zycieklockow.services.DeliveryMethodService;
+import pl.morozgrusz.zycieklockow.services.OrderService;
+import pl.morozgrusz.zycieklockow.services.UserService;
 
-import java.security.Principal;
 import java.util.List;
 
-@Controller
-@RequestMapping("/orders")
+@RestController
+@RequestMapping("/api/orders")
 public class OrderController
 {
     private OrderService orderService;
@@ -32,85 +33,76 @@ public class OrderController
         this.addressService = addressService;
     }
 
-    @GetMapping("/")
-    public String getAllOrders(Model model,
-                               Principal principal)
+    @GetMapping
+    public ResponseEntity<List<Order>> getAllOrders(@RequestHeader(name = "Auth") String jwt)
     {
-        User user = userService.findUserByEmail(principal.getName());
+        UserDetails ud = JwtUtils.readToken(jwt);
+        List<Order> orders;
+        User user;
 
-        model.addAttribute("orders", user.getOrders());
+        if (ud == null)
+        {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body(null);
+        }
 
-        return "orders/list-orders";
+        user = userService.findUserByEmail(ud.getEmail());
+
+        if (user == null)
+        {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .build();
+        }
+
+        orders = user.getOrders();
+
+        return ResponseEntity
+                .ok()
+                .body(orders);
     }
 
-    @GetMapping("/selectDeliveryMethod/")
-    public String createOrder(Model model)
+    @PostMapping("/submitOrder")
+    public ResponseEntity submitOrder(@RequestHeader(name = "Auth") String jwt, @RequestBody OrderDTO orderDTO)
     {
-        List<DeliveryMethod> deliveryMethods = deliveryMethodService.findAll();
+        UserDetails ud = JwtUtils.readToken(jwt);
+        Order order;
+        User user;
+        List<ProductWithQuantity> usersCart;
+        Address address;
+        DeliveryMethod deliveryMethod;
 
-        model.addAttribute("deliveryMethods", deliveryMethods);
+        if (ud == null)
+        {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body(null);
+        }
 
-        return "orders/select-delivery-method";
-    }
+        user = userService.findUserByEmail(ud.getEmail());
+        address = addressService.findById(orderDTO.getAddressId());
+        deliveryMethod = deliveryMethodService.findById(orderDTO.getDeliveryMethodId());
 
-    @PostMapping("/selectAddress/")
-    public String submitDeliveryMethod(Model model,
-                                       Principal principal,
-                                       @RequestParam(name = "selectedDeliveryMethodId") int selectedDeliveryMethodId)
-    {
-        User user = userService.findUserByEmail(principal.getName());
-        List<Address> usersAddresses = user.getAddresses();
+        if ((user == null) || (address == null) || (deliveryMethod == null))
+        {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .build();
+        }
 
-        model.addAttribute("usersAddresses", usersAddresses);
-        model.addAttribute("selectedDeliveryMethodId", selectedDeliveryMethodId);
+        usersCart = user.getProductsWithQuantities();
 
-        return "orders/select-address";
-    }
-
-    @PostMapping("/orderSummary/")
-    public String orderSummary(Model model,
-                               Principal principal,
-                               @RequestParam(name = "selectedDeliveryMethodId") int selectedDeliveryMethodId,
-                               @RequestParam(name = "selectedAddressId") int selectedAddressId)
-    {
-        Order order = new Order();
-        User user = userService.findUserByEmail(principal.getName());
-        List<ProductWithQuantity> usersCart = user.getProductsWithQuantities();
-        DeliveryMethod selectedDeliveryMethod = deliveryMethodService.findById(selectedDeliveryMethodId);
-        Address selectedAddress = addressService.findById(selectedAddressId);
-
+        order = new Order();
         order.setUser(user);
-        order.setDeliveryMethod(selectedDeliveryMethod);
+        order.setAddress(address);
+        order.setDeliveryMethod(deliveryMethod);
         order.setProductsWithQuantities(usersCart);
-        order.setAddress(selectedAddress);
-
-        model.addAttribute("order", order);
-
-        return "orders/order-summary";
-    }
-
-    @PostMapping("/submitOrder/")
-    public String submitOrder(RedirectAttributes redirectAttributes,
-                              Principal principal,
-                              @RequestParam(name = "selectedDeliveryMethodId") int selectedDeliveryMethodId,
-                              @RequestParam(name = "selectedAddressId") int selectedAddressId)
-    {
-        // reconstruct the order
-        Order order = new Order();
-        User user = userService.findUserByEmail(principal.getName());
-        List<ProductWithQuantity> usersCart = user.getProductsWithQuantities();
-        DeliveryMethod selectedDeliveryMethod = deliveryMethodService.findById(selectedDeliveryMethodId);
-        Address selectedAddress = addressService.findById(selectedAddressId);
-
-        order.setUser(user);
-        order.setDeliveryMethod(selectedDeliveryMethod);
-        order.setProductsWithQuantities(usersCart);
-        order.setAddress(selectedAddress);
 
         orderService.submitOrder(order);
 
-        redirectAttributes.addFlashAttribute("orderSubmitted", order.getTotalValue());
-
-        return "redirect:/orders/";
+        return ResponseEntity
+                .ok()
+                .build();
     }
 }

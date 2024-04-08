@@ -22,7 +22,7 @@ public class SecurityController
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<String> authenticate(@RequestBody LoginRequest loginRequest)
     {
         User foundUser = userService.findUserByEmail(loginRequest.getEmail());

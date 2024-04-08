@@ -10,7 +10,6 @@ import pl.morozgrusz.zycieklockow.security.JwtUtils;
 import pl.morozgrusz.zycieklockow.security.UserDetails;
 import pl.morozgrusz.zycieklockow.services.ProductService;
 import pl.morozgrusz.zycieklockow.services.ProductWithQuantityService;
-import pl.morozgrusz.zycieklockow.services.UserService;
 
 import java.util.List;
 
@@ -19,14 +18,12 @@ import java.util.List;
 public class CartController
 {
     private ProductWithQuantityService productWithQuantityService;
-    private UserService userService;
     private ProductService productService;
 
     @Autowired
-    public CartController(ProductWithQuantityService productWithQuantityService, UserService userService, ProductService productService)
+    public CartController(ProductWithQuantityService productWithQuantityService, ProductService productService)
     {
         this.productWithQuantityService = productWithQuantityService;
-        this.userService = userService;
         this.productService = productService;
     }
 

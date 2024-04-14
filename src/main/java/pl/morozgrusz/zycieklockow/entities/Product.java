@@ -41,9 +41,8 @@ public class Product
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<Rating> ratings;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Image> images;
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Image image;
 
     public Product()
     {
@@ -147,24 +146,14 @@ public class Product
         ratings.add(rating);
     }
 
-    public List<Image> getImages()
+    public Image getImage()
     {
-        return images;
+        return image;
     }
 
-    public void setImages(List<Image> images)
+    public void setImage(Image image)
     {
-        this.images = images;
-    }
-
-    public void addImage(Image image)
-    {
-        if (images == null)
-        {
-            images = new ArrayList<>();
-        }
-
-        images.add(image);
+        this.image = image;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package pl.morozgrusz.zycieklockow.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,13 +12,15 @@ public class Image
     @Column(name = "id")
     private int id;
 
-    @Column(name = "path", unique = true)
-    private String path;
+    @Lob
+    @Column(name = "image", columnDefinition = "MEDIUMBLOB")
+    private byte[] image;
 
-    @Column(name = "main")
-    private boolean main;
+    @Column(name = "content_type")
+    private String contentType;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JsonIgnore
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     @JoinColumn(name = "product_fk")
     private Product product;
 
@@ -26,10 +29,8 @@ public class Image
 
     }
 
-    public Image(String path, boolean main, Product product)
+    public Image(Product product)
     {
-        this.path = path;
-        this.main = main;
         this.product = product;
     }
 
@@ -43,24 +44,24 @@ public class Image
         this.id = id;
     }
 
-    public String getPath()
+    public byte[] getImage()
     {
-        return path;
+        return image;
     }
 
-    public void setPath(String path)
+    public void setImage(byte[] image)
     {
-        this.path = path;
+        this.image = image;
     }
 
-    public boolean isMain()
+    public String getContentType()
     {
-        return main;
+        return contentType;
     }
 
-    public void setMain(boolean main)
+    public void setContentType(String contentType)
     {
-        this.main = main;
+        this.contentType = contentType;
     }
 
     public Product getProduct()

@@ -29,6 +29,16 @@ public class ProductRepository implements ProductDAO
     }
 
     @Override
+    public List<Product> findByCategoryId(int categoryId)
+    {
+        TypedQuery<Product> query = entityManager.createQuery("SELECT p FROM Product p WHERE p.category.id = :id", Product.class);
+
+        query.setParameter("id", categoryId);
+
+        return query.getResultList();
+    }
+
+    @Override
     public List<Product> findAll()
     {
         TypedQuery<Product> query = entityManager.createQuery("FROM Product", Product.class);

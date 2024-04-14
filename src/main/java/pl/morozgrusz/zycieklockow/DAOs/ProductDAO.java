@@ -10,4 +10,5 @@ public interface ProductDAO
     List<Product> findAll();
     Product deleteById(int id);
     Product save(Product product);
+    List<Product> findByCategoryId(int categoryId);
 }

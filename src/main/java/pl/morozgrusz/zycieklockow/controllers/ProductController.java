@@ -1,5 +1,6 @@
 package pl.morozgrusz.zycieklockow.controllers;
 
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,6 +49,16 @@ public class ProductController
         return ResponseEntity
                 .ok()
                 .body(allProducts);
+    }
+
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable("id") int categoryId)
+    {
+        List<Product> products = productService.findByCategoryId(categoryId);
+
+        return ResponseEntity
+                .ok()
+                .body(products);
     }
 
     @PostMapping("/add")

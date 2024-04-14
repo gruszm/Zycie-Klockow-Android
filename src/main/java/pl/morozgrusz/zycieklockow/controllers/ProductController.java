@@ -50,6 +50,16 @@ public class ProductController
                 .body(allProducts);
     }
 
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable("id") int categoryId)
+    {
+        List<Product> products = productService.findByCategoryId(categoryId);
+
+        return ResponseEntity
+                .ok()
+                .body(products);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<Product> addProduct(@RequestBody Product product)
     {
